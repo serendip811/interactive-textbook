@@ -10,7 +10,7 @@
 | 계층 | 실행 방법 | 현재 상태 |
 |---|---|---|
 | 정적 구조 | `npm test` | 자동화 완료 |
-| 데스크톱 브라우저 | 공개 GitHub Pages에서 수동 시나리오 실행 | 부분 실행: 대표 화면 4개 저장 |
+| 데스크톱 브라우저 | 공개 GitHub Pages에서 수동 시나리오 실행 | 부분 실행: 대표 화면 5개·스트레스 화면 1개·단계 재생 GIF 저장 |
 | 모바일 브라우저 | 320·375·390·768·900px 및 iOS Safari | 실행 대기 |
 | 내용 검수 | 화성학 전문가가 PART 10~16 우선 검수 | 실행 대기 |
 
@@ -146,10 +146,10 @@ http://localhost:8000/legacy/harmony-rc1/harmony_textbook_rc1.html
 |---|---|---|
 | CAP-01 | `1-2` 반음과 온음 | 저장: `docs/evidence/rc1-1-2-desktop-initial.jpg` |
 | CAP-02 | `2-3` 음정의 종류 | 저장: `docs/evidence/rc1-2-3-desktop-initial.jpg` |
-| CAP-03 | `4-2` 3화음 | 재캡처 필요 |
+| CAP-03 | `4-2` 3화음 | 저장: `docs/evidence/rc1-4-2-desktop-initial.jpg` |
 | CAP-04 | `8-5` 종지의 활용 | 저장: `docs/evidence/rc1-8-5-desktop-step-active.jpg` |
 | CAP-05 | `15-2` 병행5도와 병행8도 | 저장: `docs/evidence/rc1-15-2-desktop-initial.jpg`; 상단 재캡처 권장 |
-| CAP-06 | 모바일 375px | 미실행 |
+| CAP-06 | 모바일 375px | 현재 브라우저의 뷰포트 변경 미지원으로 미실행 |
 
 캡처 파일명은 `rc1-{id}-{viewport}-{state}.png`로 통일한다. 재생 기록은 `rc1-{id}-{scenario}.webm` 또는 `.gif`로 저장한다.
 
