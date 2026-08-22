@@ -35,3 +35,9 @@ const sharpSpellings: Array<{ step: Step; alter: Alter }> = [{ step: 'C', alter:
 export function midiToPitch(midi: number): Pitch { const normalized = ((midi % 12) + 12) % 12; return { ...sharpSpellings[normalized], octave: Math.floor(midi / 12) - 1 }; }
 export interface PianoKeyGeometry { midi: number; pitch: Pitch; black: boolean; whiteIndex: number; }
 export function keyboardGeometry(fromMidi: number, toMidi: number): PianoKeyGeometry[] { let whiteIndex = 0; return Array.from({ length: toMidi - fromMidi + 1 }, (_, index) => { const midi = fromMidi + index; const pitch = midiToPitch(midi); const black = pitch.alter !== 0; const key = { midi, pitch, black, whiteIndex: black ? whiteIndex - 1 : whiteIndex }; if (!black) whiteIndex += 1; return key; }); }
+export interface PitchPairValidation { correct: boolean; semitones: number; kind: ToneDistance; message: string; }
+export function validatePitchPair(from: Pitch, to: Pitch, accepted: ToneDistance[] = ['semitone', 'whole-tone']): PitchPairValidation {
+  const semitones = intervalSemitones(from, to); const kind = classifyToneDistance(from, to); const correct = accepted.includes(kind);
+  const label = kind === 'semitone' ? '반음' : kind === 'whole-tone' ? '온음' : kind === 'unison' ? '같은 음' : `${semitones}반음 거리`;
+  return { correct, semitones, kind, message: correct ? `${semitones}반음: ${label}입니다.` : `두 음 사이는 ${semitones}반음입니다. 반음 또는 온음이 되는 두 음을 골라보세요.` };
+}
