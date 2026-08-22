@@ -1048,7 +1048,7 @@ verified_expanded_vexflow_rc1
 - [x] Phase 0 완료 — Harmony RC1 기준화·회귀 검증
 - [x] Phase 1 기술 스택과 pnpm workspace 구조 생성
 - [x] 플레이어·엔진·과목·교재 패키지 골격 생성
-- [-] CI 검증 — 로컬 RC1 테스트 11개 통과, 전체 lint·typecheck·Vitest·build는 GitHub Actions 실행 대기
+- [x] CI 검증 — RC1 테스트 11개, ESLint, TypeScript, Vitest 3개, Vite 프로덕션 빌드 통과
 - [ ] 콘텐츠 기본 스키마 정의
 
 ## Next
