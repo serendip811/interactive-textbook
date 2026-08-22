@@ -6,5 +6,6 @@ describe('data-driven player', () => {
   it('navigates in the order declared by content data', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.semitone')).toMatchObject({ previous: undefined, next: { id: 'harmony.lesson.interval' } }); });
   it('keeps later representative lessons reachable', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.interval').next?.id).toBe('harmony.lesson.triad'); });
   it('reaches cadence after the triad lesson', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.triad').next?.id).toBe('harmony.lesson.cadence'); });
+  it('reaches voice leading after cadence', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.cadence').next?.id).toBe('harmony.lesson.voice-leading'); });
   it('fails safely when a book has no lessons', () => { expect(() => loadBook({ ...harmonyBook, parts: [] })).toThrow('표시할 단원'); });
 });

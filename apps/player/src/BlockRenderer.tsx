@@ -10,6 +10,7 @@ import {
 } from '@interactive-textbook/common-blocks';
 import { MusicActivity } from './MusicActivity';
 import { ProgressionActivity } from './ProgressionActivity';
+import { VoiceLeadingActivity } from './VoiceLeadingActivity';
 
 function MarkdownBlock({ data }: { data: MarkdownBlockData }) {
   return <div className="prose">{data.markdown.split('\n\n').map((text, index) => <p key={index}>{text}</p>)}</div>;
@@ -32,6 +33,7 @@ function MultipleChoiceBlock({ data, onSubmit }: { data: MultipleChoiceBlockData
   </form>;
 }
 function SubjectActivityBlock({ data, referencedData, onComplete }: { data: SubjectActivityBlockData; referencedData?: unknown[]; onComplete?: (result: unknown) => void }) {
+  if (data.subject === 'music' && data.tool === 'voice-leading-editor') return <VoiceLeadingActivity title={data.title} input={data.input as never} onComplete={onComplete} />;
   if (data.subject === 'music' && ['progression-player', 'cadence-listener'].includes(data.tool)) { const input = data.input as { progressions?: unknown[] }; return <ProgressionActivity tool={data.tool} title={data.title} input={{ ...input, progressions: input.progressions?.length ? input.progressions : referencedData?.[0] } as never} onComplete={onComplete} />; }
   if (data.subject === 'music' && ['pitch-pair-viewer', 'semitone-explorer', 'interval-builder', 'chord-builder'].includes(data.tool)) return <MusicActivity tool={data.tool} title={data.title} input={data.input as never} onComplete={onComplete as never} />;
   return <section className="activity" aria-label={`${data.title} 활동`}><p className="section-label">{data.subject} · {data.tool}</p><h2>{data.title}</h2><p>과목 도구가 이 영역에 연결됩니다.</p></section>;

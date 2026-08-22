@@ -64,5 +64,12 @@ export const harmonyBook: Book = {
       { id: 'harmony.block.cadence.listener', type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.examples'], data: { subject: 'music', tool: 'cadence-listener', title: '들리는 종지 판별하기', input: { progressions: [], target: 'authentic' } } },
       { id: 'harmony.block.cadence.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.cadence'], data: { items: ['정격종지는 V에서 I로 해결됩니다.', '반종지는 V에서 멈춥니다.', '마지막 화음과 해결감을 함께 들어야 합니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.cadence.listener'] },
+  }, {
+    id: 'harmony.lesson.voice-leading', title: '15-2. 병행5도와 병행8도', summary: '두 성부가 같은 방향으로 움직일 때 생기는 완전음정의 병행을 찾아 고칩니다.', estimatedMinutes: 12, prerequisiteRefs: ['harmony.lesson.interval'], objectives: [{ id: 'harmony.objective.voice-leading', title: '병행5도·8도를 발견하고 한 성부를 수정한다.' }],
+    blocks: [
+      { id: 'harmony.block.voice-leading.concept', type: 'content.markdown', objectiveRefs: ['harmony.objective.voice-leading'], data: { markdown: '두 성부가 같은 방향으로 움직이며 완전5도에서 완전5도, 또는 완전8도에서 완전8도로 이어지면 병행5도·병행8도입니다. 먼저 한 성부의 도착음을 바꾸어 독립적인 선율을 만들어 봅니다.' } },
+      { id: 'harmony.block.voice-leading.editor', type: 'activity.subject', objectiveRefs: ['harmony.objective.voice-leading'], data: { subject: 'music', tool: 'voice-leading-editor', title: '병행8도 고치기', input: { value: { id: 'music.voice-leading.parallel-octave', voices: [{ id: 'soprano', name: '소프라노', pitches: [C5, { step: 'D', alter: 0, octave: 5 }] }, { id: 'bass', name: '베이스', pitches: [C4, D4] }] } } } },
+      { id: 'harmony.block.voice-leading.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.voice-leading'], data: { items: ['두 성부의 시작과 도착 음정을 함께 봅니다.', '같은 방향의 완전5도·8도 연속을 피합니다.', 'v0.1에서는 한 성부의 도착음 수정에 집중합니다.'] } },
+    ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.voice-leading.editor'] },
   }] }],
 };

@@ -18,6 +18,14 @@ export function cadenceFeedback(expected: CadenceType, selected: CadenceType): {
   const names: Record<CadenceType, string> = { authentic: '정격종지', half: '반종지', plagal: '변격종지', deceptive: '기만종지' }; const correct = expected === selected;
   return { correct, message: correct ? `정답입니다. 마지막이 ${names[expected]}의 기능 관계로 들립니다.` : `선택한 것은 ${names[selected]}입니다. 마지막 두 화음의 베이스와 해결감을 다시 들어보세요.` };
 }
+export interface VoiceLine { id: string; name: string; pitches: [Pitch, Pitch]; }
+export interface VoiceLeading { id: string; voices: VoiceLine[]; }
+export interface VoiceLeadingIssue { type: 'parallel-fifth' | 'parallel-octave'; voiceIds: [string, string]; fromIndex: 0; toIndex: 1; }
+export function analyzeVoiceLeading(value: VoiceLeading): VoiceLeadingIssue[] {
+  const issues: VoiceLeadingIssue[] = [];
+  for (let a = 0; a < value.voices.length; a += 1) for (let b = a + 1; b < value.voices.length; b += 1) { const first = value.voices[a]; const second = value.voices[b]; const start = Math.abs(pitchToMidi(first.pitches[0]) - pitchToMidi(second.pitches[0])) % 12; const end = Math.abs(pitchToMidi(first.pitches[1]) - pitchToMidi(second.pitches[1])) % 12; const moveA = Math.sign(pitchToMidi(first.pitches[1]) - pitchToMidi(first.pitches[0])); const moveB = Math.sign(pitchToMidi(second.pitches[1]) - pitchToMidi(second.pitches[0])); if (moveA !== 0 && moveA === moveB && start === end && (start === 7 || start === 0)) issues.push({ type: start === 7 ? 'parallel-fifth' : 'parallel-octave', voiceIds: [first.id, second.id], fromIndex: 0, toIndex: 1 }); }
+  return issues;
+}
 
 const stepIndex: Record<Step, number> = { C: 0, D: 1, E: 2, F: 3, G: 4, A: 5, B: 6 };
 const naturalSemitone: Record<Step, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };

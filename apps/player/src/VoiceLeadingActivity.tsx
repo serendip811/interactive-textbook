@@ -1,0 +1,7 @@
+import { useState } from 'react';
+import { analyzeVoiceLeading, pitchName, type Pitch, type VoiceLeading } from '@interactive-textbook/subject-music';
+import { Keyboard, Staff } from './MusicActivity';
+export function VoiceLeadingActivity({ title, input, onComplete }: { title: string; input: { value: VoiceLeading }; onComplete?: (value: unknown) => void }) {
+  const [value, setValue] = useState(input.value); const issues = analyzeVoiceLeading(value); const upper = value.voices[0]; const lower = value.voices[1]; const choose = (pitch: Pitch) => { const next = { ...value, voices: [{ ...upper, pitches: [upper.pitches[0], pitch] as [Pitch, Pitch] }, ...value.voices.slice(1)] }; setValue(next); if (!analyzeVoiceLeading(next).length) onComplete?.({ response: next, correct: true, attempts: 1 }); };
+  return <section className="music-activity"><p className="section-label">MUSIC · VOICE LEADING</p><h2>{title}</h2><div className={issues.length ? 'voice-frame has-error' : 'voice-frame'}><Staff pitches={[upper.pitches[0], lower.pitches[0], upper.pitches[1], lower.pitches[1]]} /><p>{upper.name}: {upper.pitches.map(pitchName).join(' → ')}</p><p>{lower.name}: {lower.pitches.map(pitchName).join(' → ')}</p></div><Keyboard selected={[upper.pitches[1]]} onSelect={choose} fromMidi={60} toMidi={72} /><p className="play-status" aria-live="polite">{issues.length ? issues.map((issue) => issue.type === 'parallel-fifth' ? '병행5도 발견' : '병행8도 발견').join(', ') : '규칙 위반이 없습니다. 수정 전후를 비교해 보세요.'}</p></section>;
+}
