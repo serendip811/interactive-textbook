@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { PlaybackSessionController } from '@interactive-textbook/engine-player';
+import { synthesizePitches } from './musicAudio';
 import { createInterval, keyboardGeometry, midiToPitch, pitchName, pitchToMidi, validateChordSelection, validatePitchPair, type IntervalQuality, type Pitch } from '@interactive-textbook/subject-music';
 interface PairInput { pairs?: Pitch[][]; initial?: Pitch[]; range?: { fromMidi: number; toMidi: number }; target?: { degree: number; quality: IntervalQuality }; targetPitches?: Pitch[]; }
 interface Props { tool: string; title: string; input: PairInput; onComplete?: (response: { pitches: Pitch[]; semitones: number; correct: boolean; attempts: number }) => void; }
@@ -18,7 +19,7 @@ export function Keyboard({ selected, activeMidi, onSelect, fromMidi = 60, toMidi
 function usePitchAudio() {
   const context = useRef<AudioContext | null>(null); const [activeMidi, setActiveMidi] = useState<number>(); const [playing, setPlaying] = useState(false);
   const stop = () => { playback.stop(); setActiveMidi(undefined); setPlaying(false); };
-  const play = async (pitches: Pitch[]) => { stop(); const session = playback.start('harmony.audio.semitone'); setPlaying(true); const audio = context.current ?? new AudioContext(); context.current = audio; await audio.resume(); for (const pitch of pitches) { if (session.signal.aborted) return; const midi = pitchToMidi(pitch); setActiveMidi(midi); const oscillator = audio.createOscillator(); const gain = audio.createGain(); oscillator.frequency.value = 440 * 2 ** ((midi - 69) / 12); gain.gain.setValueAtTime(.0001, audio.currentTime); gain.gain.exponentialRampToValueAtTime(.18, audio.currentTime + .02); gain.gain.exponentialRampToValueAtTime(.0001, audio.currentTime + .42); oscillator.connect(gain).connect(audio.destination); oscillator.start(); oscillator.stop(audio.currentTime + .45); await new Promise((resolve) => setTimeout(resolve, 520)); } if (!session.signal.aborted) stop(); };
+  const play = async (pitches: Pitch[]) => { stop(); const session = playback.start('harmony.audio.semitone'); setPlaying(true); const audio = context.current ?? new AudioContext(); context.current = audio; await audio.resume(); for (const pitch of pitches) { if (session.signal.aborted) return; setActiveMidi(pitchToMidi(pitch)); synthesizePitches(audio, [pitch], 450, .18); await new Promise((resolve) => setTimeout(resolve, 520)); } if (!session.signal.aborted) stop(); };
   return { activeMidi, playing, play, stop };
 }
 export function MusicActivity({ tool, title, input, onComplete }: Props) {

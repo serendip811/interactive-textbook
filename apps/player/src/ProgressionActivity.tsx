@@ -1,14 +1,15 @@
 import { useRef, useState } from 'react';
-import { cadenceFeedback, pitchName, pitchToMidi, type CadenceProgression, type CadenceType } from '@interactive-textbook/subject-music';
+import { cadenceFeedback, pitchName, type CadenceProgression, type CadenceType } from '@interactive-textbook/subject-music';
 import { PlaybackSessionController } from '@interactive-textbook/engine-player';
 import { Keyboard, Staff } from './MusicActivity';
+import { synthesizePitches } from './musicAudio';
 interface Props { tool: string; title: string; input: { progressions: CadenceProgression[]; target?: CadenceType }; onComplete?: (value: unknown) => void; }
 const sessions = new PlaybackSessionController();
 const cadenceNames: Record<CadenceType, string> = { authentic: '정격종지', half: '반종지', plagal: '변격종지', deceptive: '기만종지' };
 export function ProgressionActivity({ tool, title, input, onComplete }: Props) {
   const [exampleIndex, setExampleIndex] = useState(0); const [stepIndex, setStepIndex] = useState(0); const [playing, setPlaying] = useState(false); const [feedback, setFeedback] = useState(''); const context = useRef<AudioContext | null>(null); const progression = input.progressions[exampleIndex]; const chord = progression.steps[stepIndex]?.chord;
   const stop = () => { sessions.stop(); setPlaying(false); };
-  const soundChord = async (index: number, session: ReturnType<typeof sessions.start>) => { const step = progression.steps[index]; if (!step || session.signal.aborted) return; setStepIndex(index); const audio = context.current ?? new AudioContext(); context.current = audio; await audio.resume(); const now = audio.currentTime; for (const pitch of step.chord.pitches) { const oscillator = audio.createOscillator(); const gain = audio.createGain(); oscillator.frequency.value = 440 * 2 ** ((pitchToMidi(pitch) - 69) / 12); gain.gain.setValueAtTime(.0001, now); gain.gain.exponentialRampToValueAtTime(.1, now + .02); gain.gain.exponentialRampToValueAtTime(.0001, now + step.durationMs / 1000 - .04); oscillator.connect(gain).connect(audio.destination); oscillator.start(now); oscillator.stop(now + step.durationMs / 1000); } await new Promise((resolve) => setTimeout(resolve, step.durationMs)); };
+  const soundChord = async (index: number, session: ReturnType<typeof sessions.start>) => { const step = progression.steps[index]; if (!step || session.signal.aborted) return; setStepIndex(index); const audio = context.current ?? new AudioContext(); context.current = audio; await audio.resume(); synthesizePitches(audio, step.chord.pitches, step.durationMs, .1); await new Promise((resolve) => setTimeout(resolve, step.durationMs)); };
   const playAll = async () => { stop(); const session = sessions.start(progression.id); setPlaying(true); for (let index = 0; index < progression.steps.length; index += 1) { await soundChord(index, session); if (session.signal.aborted) return; } setPlaying(false); };
   const playStep = async () => { stop(); const next = (stepIndex + 1) % progression.steps.length; const session = sessions.start(progression.id); setPlaying(true); await soundChord(next, session); if (!session.signal.aborted) setPlaying(false); };
   const answer = (selected: CadenceType) => { if (!input.target) return; const result = cadenceFeedback(input.target, selected); setFeedback(result.message); if (result.correct) onComplete?.({ response: selected, correct: true, attempts: 1 }); };
