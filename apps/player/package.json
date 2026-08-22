@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@interactive-textbook/common-blocks": "workspace:*",
+    "@interactive-textbook/book-harmony": "workspace:*",
     "@interactive-textbook/engine-player": "workspace:*",
     "@interactive-textbook/schema": "workspace:*",
     "react": "^19.2.0",
