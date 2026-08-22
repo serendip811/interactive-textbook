@@ -4,5 +4,5 @@ packages:
   - subjects/*
   - books/*
 
-onlyBuiltDependencies:
-  - esbuild
+allowBuilds:
+  esbuild: true
