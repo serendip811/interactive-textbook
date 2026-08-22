@@ -318,21 +318,21 @@ verified_expanded_vexflow_rc1
 
 ### 1.2 콘텐츠 기본 스키마
 
-- [ ] `Book` 타입을 정의한다.
-- [ ] `Part` 타입을 정의한다.
-- [ ] `Lesson` 타입을 정의한다.
-- [ ] `Objective` 타입을 정의한다.
-- [ ] `Block` 공통 타입을 정의한다.
-- [ ] 모든 객체의 ID 규칙을 정한다.
-- [ ] 콘텐츠 버전 필드를 정의한다.
-- [ ] 엔진 요구 버전 필드를 정의한다.
-- [ ] 블록의 `objectiveRefs`를 정의한다.
-- [ ] 데이터 참조 방식을 정의한다.
-- [ ] 단원 완료 조건의 최소 형식을 정의한다.
-- [ ] JSON Schema 초안을 작성한다.
-- [ ] TypeScript 타입과 JSON Schema의 일치 방식을 정한다.
-- [ ] Markdown 본문 저장 방식을 정한다.
-- [ ] YAML을 사용할 경우 JSON 변환 과정을 정의한다.
+- [x] `Book` 타입을 정의한다.
+- [x] `Part` 타입을 정의한다.
+- [x] `Lesson` 타입을 정의한다.
+- [x] `Objective` 타입을 정의한다.
+- [x] `Block` 공통 타입을 정의한다.
+- [x] 모든 객체의 ID 규칙을 정한다. — 소문자 점·하이픈 ID
+- [x] 콘텐츠 버전 필드를 정의한다.
+- [x] 엔진 요구 버전 필드를 정의한다.
+- [x] 블록의 `objectiveRefs`를 정의한다.
+- [x] 데이터 참조 방식을 정의한다. — 단원 `DataReference`와 `dataRefs`
+- [x] 단원 완료 조건의 최소 형식을 정의한다.
+- [x] JSON Schema 초안을 작성한다.
+- [x] TypeScript 타입과 JSON Schema의 일치 방식을 정한다. — 동일 버전 수동 동기화 + 계약 테스트
+- [x] Markdown 본문 저장 방식을 정한다. — UTF-8 Markdown 문자열
+- [x] YAML을 사용할 경우 JSON 변환 과정을 정의한다. — v0.1은 JSON 객체만 정본으로 사용
 
 ### 1.3 음악 의미 데이터 v0.1
 
