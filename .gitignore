@@ -1,0 +1,20 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local runtime and test output
+node_modules/
+coverage/
+dist/
+.cache/
+playwright-report/
+test-results/
+
+# Environment files
+.env
+.env.*
+!.env.example
