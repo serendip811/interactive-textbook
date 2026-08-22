@@ -10,7 +10,7 @@
 | 계층 | 실행 방법 | 현재 상태 |
 |---|---|---|
 | 정적 구조 | `npm test` | 자동화 완료 |
-| 데스크톱 브라우저 | Chrome에서 수동 시나리오 실행 | 실행 대기 |
+| 데스크톱 브라우저 | 공개 GitHub Pages에서 수동 시나리오 실행 | 부분 실행: 대표 화면 4개 저장 |
 | 모바일 브라우저 | 320·375·390·768·900px 및 iOS Safari | 실행 대기 |
 | 내용 검수 | 화성학 전문가가 PART 10~16 우선 검수 | 실행 대기 |
 
@@ -144,12 +144,12 @@ http://localhost:8000/legacy/harmony-rc1/harmony_textbook_rc1.html
 
 | ID | 화면 | 필요한 증거 |
 |---|---|---|
-| CAP-01 | `1-2` 반음과 온음 | 건반 거리와 반음 눈금 |
-| CAP-02 | `2-3` 음정의 종류 | 플랫·샵 표기와 반음 수 |
-| CAP-03 | `4-2` 3화음 | 악보·건반·오디오 공유 상태 |
-| CAP-04 | `8-5` 종지의 활용 | 진행 단계와 하이라이트 |
-| CAP-05 | `15-2` 병행5도와 병행8도 | 현재 설명·예제와 Engine 이전 기준 |
-| CAP-06 | 모바일 375px | 목차·건반·자유 건반 서랍 |
+| CAP-01 | `1-2` 반음과 온음 | 저장: `docs/evidence/rc1-1-2-desktop-initial.jpg` |
+| CAP-02 | `2-3` 음정의 종류 | 저장: `docs/evidence/rc1-2-3-desktop-initial.jpg` |
+| CAP-03 | `4-2` 3화음 | 재캡처 필요 |
+| CAP-04 | `8-5` 종지의 활용 | 저장: `docs/evidence/rc1-8-5-desktop-step-active.jpg` |
+| CAP-05 | `15-2` 병행5도와 병행8도 | 저장: `docs/evidence/rc1-15-2-desktop-initial.jpg`; 상단 재캡처 권장 |
+| CAP-06 | 모바일 375px | 미실행 |
 
 캡처 파일명은 `rc1-{id}-{viewport}-{state}.png`로 통일한다. 재생 기록은 `rc1-{id}-{scenario}.webm` 또는 `.gif`로 저장한다.
 
