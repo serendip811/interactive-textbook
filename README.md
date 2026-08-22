@@ -10,6 +10,7 @@
 - 실행 순서와 진행 상태: [`TODO.md`](TODO.md)
 - 기준 구현체: [`legacy/harmony-rc1/harmony_textbook_rc1.html`](legacy/harmony-rc1/harmony_textbook_rc1.html)
 - RC1 정적 감사 기록: [`docs/audits/harmony_textbook_rc1_audit.md`](docs/audits/harmony_textbook_rc1_audit.md)
+- 공개 플레이어: `https://serendip811.github.io/interactive-textbook/`
 
 ## RC1 실행
 
