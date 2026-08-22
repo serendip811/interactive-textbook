@@ -3,3 +3,6 @@ packages:
   - engine/*
   - subjects/*
   - books/*
+
+onlyBuiltDependencies:
+  - esbuild
