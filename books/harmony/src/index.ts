@@ -28,5 +28,15 @@ export const harmonyBook: Book = {
       { id: 'harmony.block.semitone.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.semitone'], data: { title: '핵심 정리', items: ['반음은 인접한 두 건반 사이의 거리입니다.', '온음은 반음 두 개입니다.', 'E–F와 B–C는 자연음끼리의 반음입니다.'] } },
     ],
     completion: { type: 'required-blocks', blockRefs: ['harmony.block.semitone.explorer', 'harmony.block.semitone.check'] },
+  }, {
+    id: 'harmony.lesson.interval', title: '2-3. 음정의 종류', summary: '도수와 반음 수를 함께 사용해 음정의 이름을 찾습니다.', estimatedMinutes: 12, prerequisiteRefs: ['harmony.lesson.semitone'],
+    objectives: [{ id: 'harmony.objective.interval', title: '두 음의 도수·반음 수·성질을 판정하고 목표 음정을 만든다.' }],
+    data: [{ id: 'harmony.data.interval.examples', subject: 'music', kind: 'pitch-pairs', value: [[C4, D4], [C4, { step: 'E', alter: -1, octave: 4 }], [C4, { step: 'G', alter: 0, octave: 4 }]] }],
+    blocks: [
+      { id: 'harmony.block.interval.concept', type: 'content.markdown', objectiveRefs: ['harmony.objective.interval'], data: { markdown: '음정의 **도수**는 음 이름을 시작과 끝까지 세어 구합니다. C–E는 C, D, E의 3도입니다.\n\n같은 3도라도 반음 수가 4개면 장3도, 3개면 단3도입니다. 1·4·5·8도는 완전 계열, 2·3·6·7도는 장·단 계열을 기본으로 합니다.' } },
+      { id: 'harmony.block.interval.examples', type: 'activity.subject', objectiveRefs: ['harmony.objective.interval'], dataRefs: ['harmony.data.interval.examples'], data: { subject: 'music', tool: 'pitch-pair-viewer', title: '대표 음정을 비교해 듣기', input: { pairs: [[C4, D4], [C4, { step: 'E', alter: -1, octave: 4 }], [C4, { step: 'G', alter: 0, octave: 4 }]] } } },
+      { id: 'harmony.block.interval.builder', type: 'activity.subject', objectiveRefs: ['harmony.objective.interval'], data: { subject: 'music', tool: 'interval-builder', title: 'C4에서 완전5도 만들기', input: { initial: [C4], target: { degree: 5, quality: 'perfect' }, range: { fromMidi: 60, toMidi: 72 } } } },
+      { id: 'harmony.block.interval.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.interval'], data: { items: ['도수는 음 이름을 포함해 셉니다.', '도수와 반음 수를 함께 봐야 정확한 음정 이름을 알 수 있습니다.', 'C♯과 D♭은 같은 높이여도 음정 도수는 달라질 수 있습니다.'] } },
+    ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.interval.builder'] },
   }] }],
 };
