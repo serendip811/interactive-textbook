@@ -8,6 +8,7 @@ import {
   type SubjectActivityBlockData,
   type SummaryBlockData,
 } from '@interactive-textbook/common-blocks';
+import { MusicActivity } from './MusicActivity';
 
 function MarkdownBlock({ data }: { data: MarkdownBlockData }) {
   return <div className="prose">{data.markdown.split('\n\n').map((text, index) => <p key={index}>{text}</p>)}</div>;
@@ -29,6 +30,7 @@ function MultipleChoiceBlock({ data }: { data: MultipleChoiceBlockData }) {
   </form>;
 }
 function SubjectActivityBlock({ data }: { data: SubjectActivityBlockData }) {
+  if (data.subject === 'music' && (data.tool === 'pitch-pair-viewer' || data.tool === 'semitone-explorer')) return <MusicActivity tool={data.tool} title={data.title} input={data.input as never} />;
   return <section className="activity" aria-label={`${data.title} 활동`}><p className="section-label">{data.subject} · {data.tool}</p><h2>{data.title}</h2><p>과목 도구가 이 영역에 연결됩니다.</p></section>;
 }
 function UnsupportedBlock({ block }: { block: Block }) {

@@ -13,6 +13,7 @@
     "@interactive-textbook/book-harmony": "workspace:*",
     "@interactive-textbook/engine-player": "workspace:*",
     "@interactive-textbook/schema": "workspace:*",
+    "@interactive-textbook/subject-music": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   }

@@ -29,3 +29,9 @@ export function intervalQuality(degree: number, semitones: number): IntervalQual
   return delta === 0 ? 'major' : delta === -1 ? 'minor' : delta > 0 ? 'augmented' : 'diminished';
 }
 export function createInterval(from: Pitch, to: Pitch): Interval { const degree = intervalDegree(from, to); const semitones = intervalSemitones(from, to); return { from, to, degree, semitones, direction: intervalDirection(from, to), quality: intervalQuality(degree, semitones) }; }
+export type ToneDistance = 'unison' | 'semitone' | 'whole-tone' | 'larger';
+export function classifyToneDistance(from: Pitch, to: Pitch): ToneDistance { const distance = intervalSemitones(from, to); return distance === 0 ? 'unison' : distance === 1 ? 'semitone' : distance === 2 ? 'whole-tone' : 'larger'; }
+const sharpSpellings: Array<{ step: Step; alter: Alter }> = [{ step: 'C', alter: 0 }, { step: 'C', alter: 1 }, { step: 'D', alter: 0 }, { step: 'D', alter: 1 }, { step: 'E', alter: 0 }, { step: 'F', alter: 0 }, { step: 'F', alter: 1 }, { step: 'G', alter: 0 }, { step: 'G', alter: 1 }, { step: 'A', alter: 0 }, { step: 'A', alter: 1 }, { step: 'B', alter: 0 }];
+export function midiToPitch(midi: number): Pitch { const normalized = ((midi % 12) + 12) % 12; return { ...sharpSpellings[normalized], octave: Math.floor(midi / 12) - 1 }; }
+export interface PianoKeyGeometry { midi: number; pitch: Pitch; black: boolean; whiteIndex: number; }
+export function keyboardGeometry(fromMidi: number, toMidi: number): PianoKeyGeometry[] { let whiteIndex = 0; return Array.from({ length: toMidi - fromMidi + 1 }, (_, index) => { const midi = fromMidi + index; const pitch = midiToPitch(midi); const black = pitch.alter !== 0; const key = { midi, pitch, black, whiteIndex: black ? whiteIndex - 1 : whiteIndex }; if (!black) whiteIndex += 1; return key; }); }
