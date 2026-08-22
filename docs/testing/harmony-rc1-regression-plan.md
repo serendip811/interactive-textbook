@@ -80,6 +80,7 @@ http://localhost:8000/legacy/harmony-rc1/harmony_textbook_rc1.html
 - 현재 기대: RC1에는 정지 기능이 없어 중첩 가능성을 기록한다.
 - Engine 합격: 새 재생을 시작하면 이전 재생이 정지되고 첫 단계부터 일관되게 시작한다.
 - 연결 이슈: RC1-002
+- 2026-08-22 결과: 전체 재생 종료와 버튼 재활성화는 PASS. 전역 취소가 없어 중첩 방지는 FAIL이며 Engine v0.1 수용 위험으로 기록.
 
 ### REG-PITCH-001 플랫·샵 표기
 
@@ -174,3 +175,5 @@ http://localhost:8000/legacy/harmony-rc1/harmony_textbook_rc1.html
 - P0 내용 오류와 핵심 기능 불능 문제가 없다.
 - P1 문제는 수정하거나 Engine 이전 시 수용할 위험으로 명시한다.
 - 대표 화면 6개와 최소 한 개의 진행 재생 기록을 남긴다.
+
+2026-08-22 실행 결과는 `docs/testing/harmony-rc1-regression-results-2026-08-22.md`에 기록했다. 위 조건을 충족했으며 RC1-002를 명시적 P1 수용 위험으로 남기고 Phase 0을 통과한다.
