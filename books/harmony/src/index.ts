@@ -38,5 +38,18 @@ export const harmonyBook: Book = {
       { id: 'harmony.block.interval.builder', type: 'activity.subject', objectiveRefs: ['harmony.objective.interval'], data: { subject: 'music', tool: 'interval-builder', title: 'C4에서 완전5도 만들기', input: { initial: [C4], target: { degree: 5, quality: 'perfect' }, range: { fromMidi: 60, toMidi: 72 } } } },
       { id: 'harmony.block.interval.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.interval'], data: { items: ['도수는 음 이름을 포함해 셉니다.', '도수와 반음 수를 함께 봐야 정확한 음정 이름을 알 수 있습니다.', 'C♯과 D♭은 같은 높이여도 음정 도수는 달라질 수 있습니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.interval.builder'] },
+  }, {
+    id: 'harmony.lesson.triad', title: '4-2. 3화음', summary: '근음 위에 3도씩 쌓인 세 음의 구조와 소리를 비교합니다.', estimatedMinutes: 12, prerequisiteRefs: ['harmony.lesson.interval'],
+    objectives: [{ id: 'harmony.objective.triad', title: '장·단·감·증3화음을 구별하고 구성음을 선택한다.' }],
+    data: [{ id: 'harmony.data.triad.examples', subject: 'music', kind: 'chords', value: [
+      { id: 'music.chord.c-major', root: C4, bass: C4, pitches: [C4, { step: 'E', alter: 0, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], symbol: 'C' },
+      { id: 'music.chord.c-minor', root: C4, bass: C4, pitches: [C4, { step: 'E', alter: -1, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], symbol: 'Cm' },
+    ] }],
+    blocks: [
+      { id: 'harmony.block.triad.concept', type: 'content.markdown', objectiveRefs: ['harmony.objective.triad'], data: { markdown: '3화음은 근음에서 3도씩 쌓은 세 음입니다. 근음에서 3음과 5음까지의 반음 구조에 따라 장·단·감·증3화음으로 나뉩니다.\n\n장3화음은 4+3, 단3화음은 3+4, 감3화음은 3+3, 증3화음은 4+4 반음 구조입니다.' } },
+      { id: 'harmony.block.triad.examples', type: 'activity.subject', objectiveRefs: ['harmony.objective.triad'], dataRefs: ['harmony.data.triad.examples'], data: { subject: 'music', tool: 'pitch-pair-viewer', title: '장3화음과 단3화음 비교', input: { pairs: [[C4, { step: 'E', alter: 0, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], [C4, { step: 'E', alter: -1, octave: 4 }, { step: 'G', alter: 0, octave: 4 }]] } } },
+      { id: 'harmony.block.triad.builder', type: 'activity.subject', objectiveRefs: ['harmony.objective.triad'], data: { subject: 'music', tool: 'chord-builder', title: 'C장3화음 구성음 고르기', input: { targetPitches: [C4, { step: 'E', alter: 0, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], range: { fromMidi: 60, toMidi: 72 } } } },
+      { id: 'harmony.block.triad.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.triad'], data: { items: ['3화음은 근음·3음·5음으로 이루어집니다.', '구성음의 반음 구조가 화음의 성질을 정합니다.', '기본형과 자리바꿈은 구성음은 같고 베이스음이 다릅니다.'] } },
+    ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.triad.builder'] },
   }] }],
 };

@@ -9,6 +9,7 @@ export type IntervalDirection = 'ascending' | 'descending' | 'unison';
 export type IntervalQuality = 'perfect' | 'major' | 'minor' | 'augmented' | 'diminished';
 export interface Interval { from: Pitch; to: Pitch; degree: number; semitones: number; direction: IntervalDirection; quality: IntervalQuality; }
 export interface Chord { id: string; root: Pitch; pitches: Pitch[]; bass: Pitch; symbol?: string; }
+export type TriadQuality = 'major' | 'minor' | 'diminished' | 'augmented' | 'unknown';
 export interface ProgressionStep { chord: Chord; startsAtMs: number; durationMs: number; }
 export interface Progression { id: string; mode: 'sequential'; steps: ProgressionStep[]; }
 
@@ -40,4 +41,14 @@ export function validatePitchPair(from: Pitch, to: Pitch, accepted: ToneDistance
   const semitones = intervalSemitones(from, to); const kind = classifyToneDistance(from, to); const correct = accepted.includes(kind);
   const label = kind === 'semitone' ? '반음' : kind === 'whole-tone' ? '온음' : kind === 'unison' ? '같은 음' : `${semitones}반음 거리`;
   return { correct, semitones, kind, message: correct ? `${semitones}반음: ${label}입니다.` : `두 음 사이는 ${semitones}반음입니다. 반음 또는 온음이 되는 두 음을 골라보세요.` };
+}
+export function triadQuality(chord: Pick<Chord, 'root' | 'pitches'>): TriadQuality {
+  const root = pitchToMidi(chord.root); const intervals = [...new Set(chord.pitches.map((pitch) => ((pitchToMidi(pitch) - root) % 12 + 12) % 12))].sort((a, b) => a - b).join(',');
+  return intervals === '0,4,7' ? 'major' : intervals === '0,3,7' ? 'minor' : intervals === '0,3,6' ? 'diminished' : intervals === '0,4,8' ? 'augmented' : 'unknown';
+}
+export interface ChordSelectionResult { correct: boolean; missing: Pitch[]; extra: Pitch[]; message: string; }
+export function validateChordSelection(target: Pitch[], selected: Pitch[]): ChordSelectionResult {
+  const targetMidi = new Set(target.map(pitchToMidi)); const selectedMidi = new Set(selected.map(pitchToMidi)); const missing = target.filter((pitch) => !selectedMidi.has(pitchToMidi(pitch))); const extra = selected.filter((pitch) => !targetMidi.has(pitchToMidi(pitch))); const correct = missing.length === 0 && extra.length === 0 && selectedMidi.size === targetMidi.size;
+  const details = [missing.length ? `빠진 음: ${missing.map(pitchName).join(', ')}` : '', extra.length ? `잘못 선택한 음: ${extra.map(pitchName).join(', ')}` : ''].filter(Boolean).join(' · ');
+  return { correct, missing, extra, message: correct ? '정답입니다. 세 구성음이 모두 맞습니다.' : details || '세 음을 선택하세요.' };
 }

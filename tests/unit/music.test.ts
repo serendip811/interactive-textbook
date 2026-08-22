@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { classifyToneDistance, createInterval, keyboardGeometry, pitchName, pitchToMidi, validatePitchPair, type Pitch } from '../../subjects/music/src';
+import { classifyToneDistance, createInterval, keyboardGeometry, pitchName, pitchToMidi, triadQuality, validateChordSelection, validatePitchPair, type Pitch } from '../../subjects/music/src';
 const p = (step: Pitch['step'], alter: Pitch['alter'], octave: number): Pitch => ({ step, alter, octave });
 describe('music meaning model', () => {
   it('preserves enharmonic spelling while sharing MIDI identity', () => { const sharp = p('C', 1, 4); const flat = p('D', -1, 4); expect(pitchToMidi(sharp)).toBe(pitchToMidi(flat)); expect(pitchName(sharp)).toBe('C♯4'); expect(pitchName(flat)).toBe('D♭4'); });
   it('calculates simple and compound intervals', () => { expect(createInterval(p('C', 0, 4), p('E', -1, 4))).toMatchObject({ degree: 3, semitones: 3, quality: 'minor' }); expect(createInterval(p('C', 0, 4), p('E', 0, 5))).toMatchObject({ degree: 10, semitones: 16, quality: 'major' }); });
   it('supports descending intervals', () => { expect(createInterval(p('G', 0, 4), p('C', 0, 4))).toMatchObject({ degree: 5, semitones: 7, direction: 'descending', quality: 'perfect' }); });
   it('supports double accidentals within v0.1', () => { expect(pitchToMidi(p('F', 2, 4))).toBe(67); expect(pitchName(p('B', -2, 3))).toBe('B𝄫3'); });
+});
+describe('triad tools', () => {
+  it('classifies four triad qualities', () => { const chord = (notes: Pitch[]) => ({ root: notes[0], pitches: notes }); expect(triadQuality(chord([p('C', 0, 4), p('E', 0, 4), p('G', 0, 4)]))).toBe('major'); expect(triadQuality(chord([p('C', 0, 4), p('E', -1, 4), p('G', 0, 4)]))).toBe('minor'); expect(triadQuality(chord([p('C', 0, 4), p('E', -1, 4), p('G', -1, 4)]))).toBe('diminished'); expect(triadQuality(chord([p('C', 0, 4), p('E', 0, 4), p('G', 1, 4)]))).toBe('augmented'); });
+  it('separates missing and extra pitches', () => { const target = [p('C', 0, 4), p('E', 0, 4), p('G', 0, 4)]; expect(validateChordSelection(target, [p('C', 0, 4), p('F', 0, 4)])).toMatchObject({ correct: false, missing: [p('E', 0, 4), p('G', 0, 4)], extra: [p('F', 0, 4)] }); });
 });
 describe('semitone activity helpers', () => {
   it('classifies semitones and whole tones', () => { expect(classifyToneDistance(p('E', 0, 4), p('F', 0, 4))).toBe('semitone'); expect(classifyToneDistance(p('C', 0, 4), p('D', 0, 4))).toBe('whole-tone'); });
