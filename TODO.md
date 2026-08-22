@@ -373,13 +373,13 @@ verified_expanded_vexflow_rc1
 
 ### 1.5 최소 공통 블록
 
-- [ ] `content.markdown`을 구현한다.
-- [ ] `content.callout`을 구현한다.
-- [ ] `assessment.multiple-choice`를 구현한다.
-- [ ] `content.summary`를 구현한다.
-- [ ] 과목별 Activity 연결 블록을 구현한다.
-- [ ] 지원하지 않는 블록의 오류 화면을 구현한다.
-- [ ] 각 블록의 기본 접근성 속성을 정의한다.
+- [x] `content.markdown`을 구현한다.
+- [x] `content.callout`을 구현한다.
+- [x] `assessment.multiple-choice`를 구현한다.
+- [x] `content.summary`를 구현한다.
+- [x] 과목별 Activity 연결 블록을 구현한다.
+- [x] 지원하지 않는 블록의 오류 화면을 구현한다.
+- [x] 각 블록의 기본 접근성 속성을 정의한다.
 
 ### 1.6 플레이어 골격
 
