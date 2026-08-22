@@ -5,5 +5,5 @@
   "type": "module",
   "exports": "./src/index.ts",
   "types": "./src/index.ts",
-  "dependencies": { "@interactive-textbook/schema": "workspace:*" }
+  "dependencies": { "@interactive-textbook/schema": "workspace:*", "@interactive-textbook/subject-music": "workspace:*" }
 }
