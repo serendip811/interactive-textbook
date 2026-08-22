@@ -49,6 +49,22 @@ RC1은 새 엔진의 비교·회귀 기준으로 동결합니다.
 
 구조 변경과 신규 기능은 RC1이 아니라 이후 교재 엔진에서 진행합니다.
 
+## RC1 검사
+
+Node 내장 테스트 러너만 사용하므로 별도 패키지 설치가 필요하지 않습니다.
+
+```bash
+node --test tests/harmony-rc1-static.test.mjs
+```
+
+단원 기준표를 다시 생성하려면 다음 명령을 실행합니다.
+
+```bash
+node scripts/audit-rc1.mjs
+```
+
+수동 브라우저 검사 절차와 합격 기준은 [`docs/testing/harmony-rc1-regression-plan.md`](docs/testing/harmony-rc1-regression-plan.md)를 따릅니다.
+
 ## 문서 구조
 
 ```text
