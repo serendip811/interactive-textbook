@@ -1,0 +1,11 @@
+{
+  "name": "interactive-textbook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit:rc1": "node scripts/audit-rc1.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:rc1": "node --test tests/harmony-rc1-static.test.mjs"
+  }
+}
