@@ -5,13 +5,13 @@ interface PairInput { pairs?: Pitch[][]; initial?: Pitch[]; range?: { fromMidi: 
 interface Props { tool: string; title: string; input: PairInput; onComplete?: (response: { pitches: Pitch[]; semitones: number; correct: boolean; attempts: number }) => void; }
 const playback = new PlaybackSessionController();
 
-function Staff({ pitches, activeMidi }: { pitches: Pitch[]; activeMidi?: number }) {
+export function Staff({ pitches, activeMidi }: { pitches: Pitch[]; activeMidi?: number }) {
   return <svg className="staff" viewBox="0 0 420 130" role="img" aria-label={`악보: ${pitches.map(pitchName).join(', ')}`}>
     {[42, 54, 66, 78, 90].map((y) => <line key={y} x1="24" x2="396" y1={y} y2={y} />)}<text x="36" y="88" className="clef">𝄞</text>
     {pitches.map((pitch, index) => { const midi = pitchToMidi(pitch); const x = 140 + index * 100; const y = 90 - (midi - 60) * 3; return <g key={`${pitchName(pitch)}-${index}`} className={midi === activeMidi ? 'note active' : 'note'}><ellipse cx={x} cy={y} rx="10" ry="7" /><line x1={x + 10} x2={x + 10} y1={y} y2={y - 40} />{pitch.alter !== 0 && <text x={x - 24} y={y + 6}>{pitch.alter < 0 ? '♭' : '♯'}</text>}</g>; })}
   </svg>;
 }
-function Keyboard({ selected, activeMidi, onSelect, fromMidi = 60, toMidi = 72 }: { selected: Pitch[]; activeMidi?: number; onSelect?: (pitch: Pitch) => void; fromMidi?: number; toMidi?: number }) {
+export function Keyboard({ selected, activeMidi, onSelect, fromMidi = 60, toMidi = 72 }: { selected: Pitch[]; activeMidi?: number; onSelect?: (pitch: Pitch) => void; fromMidi?: number; toMidi?: number }) {
   const keys = keyboardGeometry(fromMidi, toMidi); const width = 100 / keys.filter((key) => !key.black).length;
   return <div className="keyboard" role="group" aria-label="C4부터 C5까지 피아노 건반">{keys.map((key) => { const selectedIndex = selected.findIndex((pitch) => pitchToMidi(pitch) === key.midi); const style = key.black ? { left: `${(key.whiteIndex + .72) * width}%`, width: `${width * .56}%` } : { left: `${key.whiteIndex * width}%`, width: `${width}%` }; return <button type="button" key={key.midi} className={`piano-key ${key.black ? 'black' : 'white'} ${selectedIndex >= 0 ? 'selected' : ''} ${activeMidi === key.midi ? 'playing' : ''}`} style={style} aria-label={`${pitchName(key.pitch)}${selectedIndex >= 0 ? `, ${selectedIndex + 1}번째 선택` : ''}`} aria-pressed={selectedIndex >= 0} onClick={() => onSelect?.(key.pitch)}><span>{key.black ? pitchName(key.pitch).replace(/\d/g, '') : key.pitch.step}</span>{selectedIndex >= 0 && <b>{selectedIndex + 1}</b>}</button>; })}</div>;
 }

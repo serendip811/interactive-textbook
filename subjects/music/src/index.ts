@@ -12,6 +12,12 @@ export interface Chord { id: string; root: Pitch; pitches: Pitch[]; bass: Pitch;
 export type TriadQuality = 'major' | 'minor' | 'diminished' | 'augmented' | 'unknown';
 export interface ProgressionStep { chord: Chord; startsAtMs: number; durationMs: number; }
 export interface Progression { id: string; mode: 'sequential'; steps: ProgressionStep[]; }
+export type CadenceType = 'authentic' | 'half' | 'plagal' | 'deceptive';
+export interface CadenceProgression extends Progression { cadenceType: CadenceType; }
+export function cadenceFeedback(expected: CadenceType, selected: CadenceType): { correct: boolean; message: string } {
+  const names: Record<CadenceType, string> = { authentic: '정격종지', half: '반종지', plagal: '변격종지', deceptive: '기만종지' }; const correct = expected === selected;
+  return { correct, message: correct ? `정답입니다. 마지막이 ${names[expected]}의 기능 관계로 들립니다.` : `선택한 것은 ${names[selected]}입니다. 마지막 두 화음의 베이스와 해결감을 다시 들어보세요.` };
+}
 
 const stepIndex: Record<Step, number> = { C: 0, D: 1, E: 2, F: 3, G: 4, A: 5, B: 6 };
 const naturalSemitone: Record<Step, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };

@@ -51,5 +51,18 @@ export const harmonyBook: Book = {
       { id: 'harmony.block.triad.builder', type: 'activity.subject', objectiveRefs: ['harmony.objective.triad'], data: { subject: 'music', tool: 'chord-builder', title: 'C장3화음 구성음 고르기', input: { targetPitches: [C4, { step: 'E', alter: 0, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], range: { fromMidi: 60, toMidi: 72 } } } },
       { id: 'harmony.block.triad.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.triad'], data: { items: ['3화음은 근음·3음·5음으로 이루어집니다.', '구성음의 반음 구조가 화음의 성질을 정합니다.', '기본형과 자리바꿈은 구성음은 같고 베이스음이 다릅니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.triad.builder'] },
+  }, {
+    id: 'harmony.lesson.cadence', title: '8-5. 종지의 활용', summary: '진행의 마지막 두 화음을 듣고 종지의 해결감을 구별합니다.', estimatedMinutes: 12, prerequisiteRefs: ['harmony.lesson.triad'],
+    objectives: [{ id: 'harmony.objective.cadence', title: '전체·단계 재생을 비교하고 종지 유형을 판별한다.' }],
+    data: [{ id: 'harmony.data.cadence.examples', subject: 'music', kind: 'progressions', value: [
+      { id: 'music.progression.authentic', mode: 'sequential', cadenceType: 'authentic', steps: [{ chord: { id: 'music.chord.g7', root: { step: 'G', alter: 0, octave: 3 }, bass: { step: 'G', alter: 0, octave: 3 }, pitches: [{ step: 'G', alter: 0, octave: 3 }, { step: 'B', alter: 0, octave: 3 }, { step: 'D', alter: 0, octave: 4 }, { step: 'F', alter: 0, octave: 4 }], symbol: 'V7' }, startsAtMs: 0, durationMs: 900 }, { chord: { id: 'music.chord.c-resolution', root: C4, bass: C4, pitches: [C4, { step: 'E', alter: 0, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], symbol: 'I' }, startsAtMs: 900, durationMs: 1200 }] },
+      { id: 'music.progression.half', mode: 'sequential', cadenceType: 'half', steps: [{ chord: { id: 'music.chord.c-start', root: C4, bass: C4, pitches: [C4, { step: 'E', alter: 0, octave: 4 }, { step: 'G', alter: 0, octave: 4 }], symbol: 'I' }, startsAtMs: 0, durationMs: 900 }, { chord: { id: 'music.chord.g-end', root: { step: 'G', alter: 0, octave: 3 }, bass: { step: 'G', alter: 0, octave: 3 }, pitches: [{ step: 'G', alter: 0, octave: 3 }, { step: 'B', alter: 0, octave: 3 }, { step: 'D', alter: 0, octave: 4 }], symbol: 'V' }, startsAtMs: 900, durationMs: 1200 }] },
+    ] }],
+    blocks: [
+      { id: 'harmony.block.cadence.concept', type: 'content.markdown', objectiveRefs: ['harmony.objective.cadence'], data: { markdown: '종지는 음악의 문장 끝에 오는 화음 진행입니다. **정격종지 V–I**는 으뜸화음으로 해결되어 강한 마침을 만들고, **반종지**는 V에서 멈춰 계속될 듯한 느낌을 줍니다.' } },
+      { id: 'harmony.block.cadence.player', type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.examples'], data: { subject: 'music', tool: 'progression-player', title: '전체 진행과 한 단계씩 비교하기', input: { progressions: [] } } },
+      { id: 'harmony.block.cadence.listener', type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.examples'], data: { subject: 'music', tool: 'cadence-listener', title: '들리는 종지 판별하기', input: { progressions: [], target: 'authentic' } } },
+      { id: 'harmony.block.cadence.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.cadence'], data: { items: ['정격종지는 V에서 I로 해결됩니다.', '반종지는 V에서 멈춥니다.', '마지막 화음과 해결감을 함께 들어야 합니다.'] } },
+    ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.cadence.listener'] },
   }] }],
 };
