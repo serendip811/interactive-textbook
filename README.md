@@ -2,7 +2,7 @@
 
 화성학에서 검증한 **개념을 직접 보고·듣고·조작하며 이해하는 학습 경험**을 재사용 가능한 교재 엔진으로 만들고, 서로 다른 두 번째 교재에서 검증한 뒤 플랫폼으로 확장하는 프로젝트입니다.
 
-현재 단계는 **Phase 0 — Harmony RC1 기준화**입니다.
+현재 단계는 **Phase 1 — Engine v0.1 최소 설계**입니다. Phase 0의 Harmony RC1 기준화와 회귀 검증은 완료했습니다.
 
 ## 현재 기준
 
@@ -65,12 +65,44 @@ node scripts/audit-rc1.mjs
 
 수동 브라우저 검사 절차와 합격 기준은 [`docs/testing/harmony-rc1-regression-plan.md`](docs/testing/harmony-rc1-regression-plan.md)를 따릅니다.
 
+## Engine 개발
+
+Node 24와 pnpm 11을 사용합니다.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+전체 검증 명령은 다음과 같습니다.
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+```
+
+기술 스택과 패키지 경계의 결정 근거는 [`docs/decisions/0001-phase-1-tech-stack.md`](docs/decisions/0001-phase-1-tech-stack.md)에 기록합니다.
+
 ## 문서 구조
 
 ```text
 .
 ├── README.md
 ├── TODO.md
+├── apps/player/
+├── engine/
+│   ├── schema/
+│   ├── player/
+│   ├── common-blocks/
+│   └── learning-state/
+├── subjects/
+│   ├── music/
+│   └── math/
+├── books/
+│   ├── harmony/
+│   └── functions/
 ├── docs/
 │   ├── v0.2.md
 │   ├── archive/
@@ -94,4 +126,4 @@ node scripts/audit-rc1.mjs
 
 ## 다음 작업
 
-`TODO.md`의 `NOW — Phase 0` 항목을 위에서부터 진행합니다. Phase 0의 통과 조건을 만족한 뒤에만 Engine v0.1 구현으로 넘어갑니다.
+`TODO.md`의 Phase 1 항목을 위에서부터 진행합니다. 다음 작업은 콘텐츠 기본 스키마 정의입니다.

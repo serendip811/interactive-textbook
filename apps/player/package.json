@@ -1,0 +1,18 @@
+{
+  "name": "@interactive-textbook/player",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@interactive-textbook/common-blocks": "workspace:*",
+    "@interactive-textbook/engine-player": "workspace:*",
+    "@interactive-textbook/schema": "workspace:*",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

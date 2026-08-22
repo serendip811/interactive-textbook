@@ -300,21 +300,21 @@ verified_expanded_vexflow_rc1
 
 ### 1.1 개발 환경과 프로젝트 구조
 
-- [ ] 프론트엔드 기술 스택을 결정한다.
-- [ ] 패키지 관리 방식을 결정한다.
-- [ ] 테스트 도구를 결정한다.
-- [ ] 코드 스타일과 린트 설정을 추가한다.
-- [ ] 새 엔진 프로젝트를 생성한다.
-- [ ] `apps/player` 영역을 만든다.
-- [ ] `engine/schema` 영역을 만든다.
-- [ ] `engine/player` 영역을 만든다.
-- [ ] `engine/common-blocks` 영역을 만든다.
-- [ ] `engine/learning-state` 영역을 만든다.
-- [ ] `subjects/music` 영역을 만든다.
-- [ ] `subjects/math` 확장 위치를 예약한다.
-- [ ] `books/harmony` 콘텐츠 영역을 만든다.
-- [ ] `books/functions` 확장 위치를 예약한다.
-- [ ] 단위·통합·회귀 테스트 위치를 구분한다.
+- [x] 프론트엔드 기술 스택을 결정한다. — TypeScript, React, Vite
+- [x] 패키지 관리 방식을 결정한다. — pnpm workspace
+- [x] 테스트 도구를 결정한다. — Vitest + RC1 Node test runner
+- [x] 코드 스타일과 린트 설정을 추가한다. — ESLint flat config + Prettier
+- [x] 새 엔진 프로젝트를 생성한다.
+- [x] `apps/player` 영역을 만든다.
+- [x] `engine/schema` 영역을 만든다.
+- [x] `engine/player` 영역을 만든다.
+- [x] `engine/common-blocks` 영역을 만든다.
+- [x] `engine/learning-state` 영역을 만든다.
+- [x] `subjects/music` 영역을 만든다.
+- [x] `subjects/math` 확장 위치를 예약한다.
+- [x] `books/harmony` 콘텐츠 영역을 만든다.
+- [x] `books/functions` 확장 위치를 예약한다.
+- [x] 단위·통합·회귀 테스트 위치를 구분한다.
 
 ### 1.2 콘텐츠 기본 스키마
 
@@ -1045,18 +1045,16 @@ verified_expanded_vexflow_rc1
 
 ## Now
 
-- [x] Harmony RC1 동결 — 원본, 실행 README, 보존 브랜치 등록 완료
-- [x] 76개 단원 목록 작성
-- [x] 단원별 목표·선수 지식·시간·이전 난이도·대표 여부 기록
-- [x] 알려진 문제 목록 작성 — 정적 후보와 브라우저·전문 검수 대기 항목 분리
-- [x] 대표 회귀 테스트 기준 작성 — 이슈 ID와 테스트 시나리오 연결
-- [x] 회귀 테스트 실행 — 정적 11개, 데스크톱 6개, iPhone 모바일 4개, 단계 재생·전체 종료 확인
-- [x] 대표 회귀 테스트 작성 및 실행 — 중첩 재생 FAIL은 RC1 P1 수용 위험으로 Engine v0.1에 이전
+- [x] Phase 0 완료 — Harmony RC1 기준화·회귀 검증
+- [x] Phase 1 기술 스택과 pnpm workspace 구조 생성
+- [x] 플레이어·엔진·과목·교재 패키지 골격 생성
+- [-] CI 검증 — 로컬 RC1 테스트 11개 통과, 전체 lint·typecheck·Vitest·build는 GitHub Actions 실행 대기
+- [ ] 콘텐츠 기본 스키마 정의
 
 ## Next
 
-- [ ] 프로젝트 기본 구조 생성 — Phase 1 첫 작업
-- [ ] 콘텐츠 스키마 초안 작성
+- [x] 프로젝트 기본 구조 생성 — Phase 1 첫 작업
+- [ ] 콘텐츠 스키마 초안 작성 — Phase 1 다음 작업
 - [ ] Pitch·Interval 의미 모델 작성
 - [ ] 최소 플레이어와 공통 Block 구현
 - [ ] 반음과 온음 단원 이전
