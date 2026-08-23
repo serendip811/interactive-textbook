@@ -8,11 +8,12 @@ export function VoiceLeadingActivity({ title, input, onComplete }: { title: stri
   const issues = analyzeVoiceLeading(value);
   const upper = value.voices[0];
   const lower = value.voices[1];
+  const targetPitch = input.targetPitch ?? { step: 'B', alter: 0, octave: 4 };
   const choose = (pitch: Pitch) => {
     const next = { ...value, voices: [{ ...upper, pitches: [upper.pitches[0], pitch] as [Pitch, Pitch] }, ...value.voices.slice(1)] };
     const nextIssues = analyzeVoiceLeading(next);
     const count = attempts + 1;
-    const targetMatched = !input.targetPitch || pitchToMidi(pitch) === pitchToMidi(input.targetPitch);
+    const targetMatched = pitchToMidi(pitch) === pitchToMidi(targetPitch);
     const correct = nextIssues.length === 0 && targetMatched;
     setValue(next);
     setAttempts(count);
@@ -27,5 +28,5 @@ export function VoiceLeadingActivity({ title, input, onComplete }: { title: stri
       setFeedback('방향은 맞지만 한 단계가 아닙니다. C5 바로 아래의 흰 건반을 선택해 보세요.');
     }
   };
-  return <section className="music-activity"><p className="section-label">MUSIC · VOICE LEADING</p><h2>{title}</h2><p className="activity-instruction"><strong>목표</strong> {input.instruction ?? '소프라노를 아래 방향으로 한 단계 움직여 병행을 고치세요.'}</p><div className={issues.length ? 'voice-frame has-error' : 'voice-frame'}><Staff pitches={[upper.pitches[0], lower.pitches[0], upper.pitches[1], lower.pitches[1]]} /><p>{upper.name}: {upper.pitches.map(pitchName).join(' → ')}</p><p>{lower.name}: {lower.pitches.map(pitchName).join(' → ')}</p></div><Keyboard selected={[upper.pitches[1]]} onSelect={choose} fromMidi={60} toMidi={72} /><p className={feedback.startsWith('정답') ? 'play-status feedback--success' : 'play-status'} aria-live="polite">{feedback}</p></section>;
+  return <section className="music-activity"><p className="section-label">MUSIC · VOICE LEADING</p><h2>{title}</h2><p className="activity-instruction"><strong>목표</strong> {input.instruction ?? '소프라노를 아래 방향으로 한 단계 움직여 병행을 고치세요.'}</p><div className={issues.length ? 'voice-frame has-error' : 'voice-frame'}><Staff pitches={[upper.pitches[0], lower.pitches[0], upper.pitches[1], lower.pitches[1]]} /><p>{upper.name}: {upper.pitches.map(pitchName).join(' → ')}</p><p>{lower.name}: {lower.pitches.map((pitchName).join(' → ')}</p></div><Keyboard selected={[]] onSelect={choose} fromMidi={60} toMidi={72} /><p className={feedback.startsWith('정답') ? 'play-status feedback--success' : 'play-status'} aria-live="polite">{feedback}</p></section>;
 }
