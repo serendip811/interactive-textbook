@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { harmonyBook } from '@interactive-textbook/book-harmony';
 import { findLesson, flattenLessons, getLessonNavigation, loadBook } from '@interactive-textbook/engine-player';
 import { BlockRenderer } from './BlockRenderer';
 import { clearBookProgress, emptyBookProgress, loadBookProgress, saveBookProgress, updateLessonProgress, type ActivityProgress, type BookProgress } from '@interactive-textbook/learning-state';
+
 
 export function App() {
   const result = useMemo(() => { try { return { book: loadBook(harmonyBook) }; } catch (error) { return { error: error instanceof Error ? error.message : '알 수 없는 오류' }; } }, []);
@@ -10,6 +11,7 @@ export function App() {
   const initialProgress = useMemo(() => result.book && typeof localStorage !== 'undefined' ? loadBookProgress(localStorage, result.book.id, result.book.contentVersion) : result.book ? emptyBookProgress(result.book.id, result.book.contentVersion) : undefined, [result.book]);
   const [progress, setProgress] = useState<BookProgress | undefined>(initialProgress);
   const [currentId, setCurrentId] = useState(initialProgress?.currentLessonId ?? firstLesson?.id ?? '');
+  useEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); }, [currentId]);
   if (!result.book) return <main className="fatal" role="alert"><h1>교재를 열 수 없습니다.</h1><p>{result.error}</p></main>;
   const location = findLesson(result.book, currentId);
   if (!location) return <main className="fatal" role="alert"><h1>단원을 찾을 수 없습니다.</h1><button onClick={() => setCurrentId(firstLesson?.id ?? '')}>첫 단원으로 이동</button></main>;
@@ -25,3 +27,4 @@ export function App() {
       <nav className="lesson-nav" aria-label="단원 이동"><button disabled={!navigation.previous} onClick={() => navigation.previous && setCurrentId(navigation.previous.id)}>← {navigation.previous?.title ?? '이전 단원'}</button><button disabled={!navigation.next} onClick={() => navigation.next && setCurrentId(navigation.next.id)}>{navigation.next?.title ?? '다음 단원'} →</button></nav></main>
   </div>;
 }
+
