@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { harmonyBook } from '@interactive-textbook/book-harmony';
 import { findLesson, flattenLessons, getLessonNavigation, loadBook } from '@interactive-textbook/engine-player';
 import { BlockRenderer } from './BlockRenderer';
@@ -11,7 +11,9 @@ export function App() {
   const initialProgress = useMemo(() => result.book && typeof localStorage !== 'undefined' ? loadBookProgress(localStorage, result.book.id, result.book.contentVersion) : result.book ? emptyBookProgress(result.book.id, result.book.contentVersion) : undefined, [result.book]);
   const [progress, setProgress] = useState<BookProgress | undefined>(initialProgress);
   const [currentId, setCurrentId] = useState(initialProgress?.currentLessonId ?? firstLesson?.id ?? '');
-  useEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); }, [currentId]);
+  const lessonHeadingRef = useRef<HTMLHeadingElement>(null);
+  const previousLessonId = useRef(currentId);
+  useEffect(() => { const changed = previousLessonId.current !== currentId; previousLessonId.current = currentId; window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); if (changed) lessonHeadingRef.current?.focus({ preventScroll: true }); }, [currentId]);
   if (!result.book) return <main className="fatal" role="alert"><h1>교재를 열 수 없습니다.</h1><p>{result.error}</p></main>;
   const location = findLesson(result.book, currentId);
   if (!location) return <main className="fatal" role="alert"><h1>단원을 찾을 수 없습니다.</h1><button onClick={() => setCurrentId(firstLesson?.id ?? '')}>첫 단원으로 이동</button></main>;
@@ -20,11 +22,10 @@ export function App() {
     if (!current) return current; const prior = current.lessons[currentId]; const activity = value as { response?: unknown; pitches?: unknown; correct?: boolean; attempts?: number } | undefined; const item: ActivityProgress | undefined = activity ? { response: activity.response ?? activity.pitches, correct: Boolean(activity.correct), attempts: activity.attempts ?? 1, completed: Boolean(activity.correct), updatedAt: new Date().toISOString() } : undefined;
     const activities = kind === 'activity' && item ? { ...(prior?.activities ?? {}), [blockId]: item } : (prior?.activities ?? {}); const assessments = kind === 'assessment' && item ? { ...(prior?.assessments ?? {}), [blockId]: item } : (prior?.assessments ?? {}); const required = location.lesson.completion.type === 'required-blocks' ? location.lesson.completion.blockRefs : []; const completed = required.length > 0 && required.every((id) => activities[id]?.completed || assessments[id]?.completed); const next = updateLessonProgress(current, currentId, { status: completed ? 'completed' : 'started', lastBlockId: blockId, activities, assessments }); saveBookProgress(localStorage, next); return next;
   });
-  return <div className="app-shell">
+  return <><a className="skip-link" href="#main-content">본문으로 건너뛰기</a><div className="app-shell">
     <aside className="toc" aria-label="교재 목차"><div className="brand"><span>INTERACTIVE BOOK</span><strong>{result.book.title}</strong></div>{result.book.parts.map((part) => <section key={part.id}><h2>{part.title}</h2><ol>{part.lessons.map((lesson) => <li key={lesson.id}><button className={lesson.id === currentId ? 'active' : ''} aria-current={lesson.id === currentId ? 'page' : undefined} onClick={() => setCurrentId(lesson.id)}>{progress?.lessons[lesson.id]?.status === 'completed' ? '✓ ' : ''}{lesson.title}</button></li>)}</ol></section>)}<button className="reset-progress" onClick={() => { clearBookProgress(localStorage, result.book.id); const reset = emptyBookProgress(result.book.id, result.book.contentVersion); setProgress(reset); setCurrentId(firstLesson?.id ?? ''); }}>학습 기록 초기화</button></aside>
-    <main className="lesson"><header className="lesson-header"><p className="eyebrow">{location.part.title} · {location.flatIndex + 1} / {flattenLessons(result.book).length}</p><h1>{location.lesson.title}</h1>{location.lesson.summary && <p className="lede">{location.lesson.summary}</p>}<ul className="objectives" aria-label="학습 목표">{location.lesson.objectives.map((objective) => <li key={objective.id}>{objective.title}</li>)}</ul></header>
+    <main className="lesson" id="main-content"><header className="lesson-header"><p className="eyebrow">{location.part.title} · {location.flatIndex + 1} / {flattenLessons(result.book).length}</p><h1 ref={lessonHeadingRef} tabIndex={-1}>{location.lesson.title}</h1>{location.lesson.summary && <p className="lede">{location.lesson.summary}</p>}<ul className="objectives" aria-label="학습 목표">{location.lesson.objectives.map((objective) => <li key={objective.id}>{objective.title}</li>)}</ul></header>
       {progress?.lessons[currentId]?.status === 'completed' && <p className="completion" role="status">✓ 이 단원을 완료했습니다.</p>}<div className="blocks">{location.lesson.blocks.map((block) => <BlockRenderer key={block.id} block={block} referencedData={block.dataRefs?.map((id) => location.lesson.data?.find((item) => item.id === id)?.value)} onProgress={(kind, value) => record(block.id, kind, value)} />)}</div>
       <nav className="lesson-nav" aria-label="단원 이동"><button disabled={!navigation.previous} onClick={() => navigation.previous && setCurrentId(navigation.previous.id)}>← {navigation.previous?.title ?? '이전 단원'}</button><button disabled={!navigation.next} onClick={() => navigation.next && setCurrentId(navigation.next.id)}>{navigation.next?.title ?? '다음 단원'} →</button></nav></main>
-  </div>;
+  </div></>;
 }
-
