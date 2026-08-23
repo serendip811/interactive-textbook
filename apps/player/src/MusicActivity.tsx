@@ -5,15 +5,15 @@ import { createInterval, keyboardGeometry, midiToPitch, pitchName, pitchToMidi, 
 interface PairInput { pairs?: Pitch[][]; initial?: Pitch[]; range?: { fromMidi: number; toMidi: number }; target?: { degree: number; quality: IntervalQuality }; targetPitches?: Pitch[]; }
 interface Props { tool: string; title: string; input: PairInput; onComplete?: (response: { pitches: Pitch[]; semitones: number; correct: boolean; attempts: number }) => void; }
 const playback = new PlaybackSessionController();
+const staffStep = { C: 0, D: 1, E: 2, F: 3, G: 4, A: 5, B: 6 } as const;
+function staffY(pitch: Pitch) { const diatonic = pitch.octave * 7 + staffStep[pitch.step]; const e4 = 4 * 7 + staffStep.E; return 90 - (diatonic - e4) * 6; }
+function ledgerLines(y: number) { const lines: number[] = []; if (y >= 102) for (let line = 102; line <= y; line += 12) lines.push(line); if (y <= 30) for (let line = 30; line >= y; line -= 12) lines.push(line); return lines; }
 
-
-
-
-export function Staff({ pitches, activeMidi }: { pitches: Pitch[]; activeMidi?: number }) {
-  const spacing = pitches.length > 1 ? Math.min(100, 240 / (pitches.length - 1)) : 0; const startX = 240 - spacing * (pitches.length - 1) / 2;
-  return <svg className="staff" viewBox="0 0 420 130" role="img" aria-label={`악보: ${pitches.map(pitchName).join(', ')}`}>
+export function Staff({ pitches = [], groups, activeMidi }: { pitches?: Pitch[]; groups?: Pitch[][]; activeMidi?: number }) {
+  const columns = groups ?? pitches.map((pitch) => [pitch]); const allPitches = columns.flat(); const spacing = columns.length > 1 ? Math.min(140, 240 / (columns.length - 1)) : 0; const startX = 240 - spacing * (columns.length - 1) / 2;
+  return <svg className="staff" viewBox="0 0 420 130" role="img" aria-label={`악보: ${allPitches.map(pitchName).join(', ')}`}>
     {[42, 54, 66, 78, 90].map((y) => <line key={y} x1="24" x2="396" y1={y} y2={y} />)}<text x="36" y="88" className="clef">𝄞</text>
-    {pitches.map((pitch, index) => { const midi = pitchToMidi(pitch); const x = startX + index * spacing; const y = 90 - (midi - 60) * 3; return <g key={`${pitchName(pitch)}-${index}`} className={midi === activeMidi ? 'note active' : 'note'}><ellipse cx={x} cy={y} rx="10" ry="7" /><line x1={x + 10} x2={x + 10} y1={y} y2={y - 40} />{pitch.alter !== 0 && <text x={x - 24} y={y + 6}>{pitch.alter < 0 ? '♭' : '♯'}</text>}</g>; })}
+    {columns.map((column, columnIndex) => { const x = startX + columnIndex * spacing; return column.map((pitch, pitchIndex) => { const midi = pitchToMidi(pitch); const y = staffY(pitch); return <g key={`${pitchName(pitch)}-${columnIndex}-${pitchIndex}`} className={midi === activeMidi ? 'note active' : 'note'}>{ledgerLines(y).map((line) => <line key={line} x1={x - 16} x2={x + 16} y1={line} y2={line} />)}<ellipse cx={x} cy={y} rx="10" ry="7" /><line x1={x + 10} x2={x + 10} y1={y} y2={y - 40} />{pitch.alter !== 0 && <text x={x - 24} y={y + 6}>{pitch.alter < 0 ? '♭' : '♯'}</text>}</g>; }); })}
   </svg>;
 }
 export function Keyboard({ selected, activeMidi, onSelect, fromMidi = 60, toMidi = 72 }: { selected: Pitch[]; activeMidi?: number; onSelect?: (pitch: Pitch) => void; fromMidi?: number; toMidi?: number }) {
@@ -33,6 +33,3 @@ export function MusicActivity({ tool, title, input, onComplete }: Props) {
   const check = () => { const count = attempts + 1; setAttempts(count); if (tool === 'chord-builder' && input.targetPitches) { const result = validateChordSelection(input.targetPitches, selected); setFeedback(result.message); if (result.correct) onComplete?.({ pitches: selected, semitones: 0, correct: true, attempts: count }); return; } if (selected.length !== 2) { setFeedback('두 음을 차례로 선택하세요.'); return; } if (tool === 'interval-builder' && input.target) { const interval = createInterval(selected[0], selected[1]); const correct = interval.degree === input.target.degree && interval.quality === input.target.quality; setFeedback(correct ? `정답입니다. ${interval.semitones}반음의 완전${interval.degree}도입니다.` : `현재 ${interval.degree}도, ${interval.semitones}반음입니다. 도수와 반음 수를 함께 확인하세요.`); if (correct) onComplete?.({ pitches: selected, semitones: interval.semitones, correct, attempts: count }); return; } const result = validatePitchPair(selected[0], selected[1]); setFeedback(result.message); if (result.correct) onComplete?.({ pitches: selected, semitones: result.semitones, correct: true, attempts: count }); };
   return <section className="music-activity" aria-labelledby={`music-${tool}`}><p className="section-label">MUSIC · {tool}</p><h2 id={`music-${tool}`}>{title}</h2><Staff pitches={displayed} activeMidi={audio.activeMidi} /><Keyboard selected={displayed} activeMidi={audio.activeMidi} onSelect={interactive ? choose : undefined} fromMidi={input.range?.fromMidi} toMidi={input.range?.toMidi} />{tool === 'pitch-pair-viewer' && <div className="pair-tabs">{pairs.map((pair, index) => <button type="button" key={index} aria-pressed={pairIndex === index} onClick={() => setPairIndex(index)}>{pair.map(pitchName).join('–')}</button>)}</div>}<div className="activity-controls"><button type="button" onClick={() => audio.play(displayed)}>{audio.playing ? '처음부터 듣기' : `▶ ${tool === 'chord-builder' ? '화음' : '두 음'} 듣기`}</button>{audio.playing && <button type="button" onClick={audio.stop}>■ 중지</button>}{interactive && <><button type="button" onClick={check}>판정하기</button><button type="button" className="secondary" onClick={() => { setSelected(tool === 'interval-builder' ? input.initial ?? [] : []); setFeedback(''); audio.stop(); }}>초기화</button></>}</div><p className="play-status" aria-live="polite">{audio.playing && audio.activeMidi !== undefined ? `${pitchName(midiToPitch(audio.activeMidi))} 재생 중` : feedback}</p></section>;
 }
-
-
-
