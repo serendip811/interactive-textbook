@@ -7,10 +7,13 @@ interface Props { tool: string; title: string; input: PairInput; onComplete?: (r
 const playback = new PlaybackSessionController();
 
 
+
+
 export function Staff({ pitches, activeMidi }: { pitches: Pitch[]; activeMidi?: number }) {
+  const spacing = pitches.length > 1 ? Math.min(100, 240 / (pitches.length - 1)) : 0; const startX = 240 - spacing * (pitches.length - 1) / 2;
   return <svg className="staff" viewBox="0 0 420 130" role="img" aria-label={`악보: ${pitches.map(pitchName).join(', ')}`}>
     {[42, 54, 66, 78, 90].map((y) => <line key={y} x1="24" x2="396" y1={y} y2={y} />)}<text x="36" y="88" className="clef">𝄞</text>
-    {pitches.map((pitch, index) => { const midi = pitchToMidi(pitch); const x = 140 + index * 100; const y = 90 - (midi - 60) * 3; return <g key={`${pitchName(pitch)}-${index}`} className={midi === activeMidi ? 'note active' : 'note'}><ellipse cx={x} cy={y} rx="10" ry="7" /><line x1={x + 10} x2={x + 10} y1={y} y2={y - 40} />{pitch.alter !== 0 && <text x={x - 24} y={y + 6}>{pitch.alter < 0 ? '♭' : '♯'}</text>}</g>; })}
+    {pitches.map((pitch, index) => { const midi = pitchToMidi(pitch); const x = startX + index * spacing; const y = 90 - (midi - 60) * 3; return <g key={`${pitchName(pitch)}-${index}`} className={midi === activeMidi ? 'note active' : 'note'}><ellipse cx={x} cy={y} rx="10" ry="7" /><line x1={x + 10} x2={x + 10} y1={y} y2={y - 40} />{pitch.alter !== 0 && <text x={x - 24} y={y + 6}>{pitch.alter < 0 ? '♭' : '♯'}</text>}</g>; })}
   </svg>;
 }
 export function Keyboard({ selected, activeMidi, onSelect, fromMidi = 60, toMidi = 72 }: { selected: Pitch[]; activeMidi?: number; onSelect?: (pitch: Pitch) => void; fromMidi?: number; toMidi?: number }) {
@@ -30,4 +33,6 @@ export function MusicActivity({ tool, title, input, onComplete }: Props) {
   const check = () => { const count = attempts + 1; setAttempts(count); if (tool === 'chord-builder' && input.targetPitches) { const result = validateChordSelection(input.targetPitches, selected); setFeedback(result.message); if (result.correct) onComplete?.({ pitches: selected, semitones: 0, correct: true, attempts: count }); return; } if (selected.length !== 2) { setFeedback('두 음을 차례로 선택하세요.'); return; } if (tool === 'interval-builder' && input.target) { const interval = createInterval(selected[0], selected[1]); const correct = interval.degree === input.target.degree && interval.quality === input.target.quality; setFeedback(correct ? `정답입니다. ${interval.semitones}반음의 완전${interval.degree}도입니다.` : `현재 ${interval.degree}도, ${interval.semitones}반음입니다. 도수와 반음 수를 함께 확인하세요.`); if (correct) onComplete?.({ pitches: selected, semitones: interval.semitones, correct, attempts: count }); return; } const result = validatePitchPair(selected[0], selected[1]); setFeedback(result.message); if (result.correct) onComplete?.({ pitches: selected, semitones: result.semitones, correct: true, attempts: count }); };
   return <section className="music-activity" aria-labelledby={`music-${tool}`}><p className="section-label">MUSIC · {tool}</p><h2 id={`music-${tool}`}>{title}</h2><Staff pitches={displayed} activeMidi={audio.activeMidi} /><Keyboard selected={displayed} activeMidi={audio.activeMidi} onSelect={interactive ? choose : undefined} fromMidi={input.range?.fromMidi} toMidi={input.range?.toMidi} />{tool === 'pitch-pair-viewer' && <div className="pair-tabs">{pairs.map((pair, index) => <button type="button" key={index} aria-pressed={pairIndex === index} onClick={() => setPairIndex(index)}>{pair.map(pitchName).join('–')}</button>)}</div>}<div className="activity-controls"><button type="button" onClick={() => audio.play(displayed)}>{audio.playing ? '처음부터 듣기' : `▶ ${tool === 'chord-builder' ? '화음' : '두 음'} 듣기`}</button>{audio.playing && <button type="button" onClick={audio.stop}>■ 중지</button>}{interactive && <><button type="button" onClick={check}>판정하기</button><button type="button" className="secondary" onClick={() => { setSelected(tool === 'interval-builder' ? input.initial ?? [] : []); setFeedback(''); audio.stop(); }}>초기화</button></>}</div><p className="play-status" aria-live="polite">{audio.playing && audio.activeMidi !== undefined ? `${pitchName(midiToPitch(audio.activeMidi))} 재생 중` : feedback}</p></section>;
 }
+
+
 
