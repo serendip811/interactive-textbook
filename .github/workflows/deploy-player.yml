@@ -28,6 +28,10 @@ jobs:
           package-manager-cache: false
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm build
+      - name: Include Harmony RC1 comparison build
+        run: |
+          mkdir -p apps/player/dist/legacy/harmony-rc1
+          cp legacy/harmony-rc1/harmony_textbook_rc1.html apps/player/dist/legacy/harmony-rc1/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

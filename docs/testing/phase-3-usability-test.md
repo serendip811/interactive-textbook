@@ -7,6 +7,8 @@
 > 진행자용 기록지: [`phase-3-usability-session-sheet.md`](./phase-3-usability-session-sheet.md)
 >
 > 결과 취합표: [`phase-3-usability-results.md`](./phase-3-usability-results.md)
+>
+> 에이전트 사전 점검: [`phase-3-agent-usability-results-2026-08-24.md`](./phase-3-agent-usability-results-2026-08-24.md)
 
 ## 참여자
 
