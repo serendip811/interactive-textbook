@@ -3,6 +3,7 @@ import type { CoordinatePlane, LinearFunction } from '@interactive-textbook/subj
 
 export const functionsBookId = 'functions-and-graphs' as const;
 const plane: CoordinatePlane = { xAxis: { min: -5, max: 5, step: 1, label: 'x' }, yAxis: { min: -5, max: 5, step: 1, label: 'y' } };
+const inputOutputPlane: CoordinatePlane = { xAxis: { min: -5, max: 5, step: 1, label: 'x' }, yAxis: { min: -5, max: 9, step: 1, label: 'y' } };
 const line = (id: string, slope: number, intercept: number): LinearFunction => ({ id, kind: 'linear', slope, intercept });
 
 export const functionsBook: Book = {
@@ -20,7 +21,7 @@ export const functionsBook: Book = {
     objectives: [{ id: 'functions.objective.input-output', title: '함수 규칙에 입력값을 넣어 출력값을 구한다.' }],
     blocks: [
       { id: 'functions.block.input-output.concept', type: 'content.markdown', objectiveRefs: ['functions.objective.input-output'], data: { markdown: '함수는 입력값을 하나 넣으면 정해진 규칙에 따라 출력값 하나를 만듭니다. 여기서는 **y = 2x + 1** 규칙을 사용합니다.' } },
-      { id: 'functions.block.input-output.machine', type: 'activity.subject', objectiveRefs: ['functions.objective.input-output'], data: { subject: 'math', tool: 'function-machine', title: '출력 7을 만드는 입력 찾기', input: { plane, fn: line('math.function.input-output', 2, 1), targetOutput: 7 } } },
+      { id: 'functions.block.input-output.machine', type: 'activity.subject', objectiveRefs: ['functions.objective.input-output'], data: { subject: 'math', tool: 'function-machine', title: '출력 7을 만드는 입력 찾기', input: { plane: inputOutputPlane, fn: line('math.function.input-output', 2, 1), xValues: [-2, -1, 0, 1, 2, 3], targetOutput: 7 } } },
       { id: 'functions.block.input-output.summary', type: 'content.summary', objectiveRefs: ['functions.objective.input-output'], data: { items: ['입력 x가 정해지면 출력 y가 정해집니다.', '수식·표·그래프는 같은 함수 규칙을 표현합니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['functions.block.input-output.machine'] },
   }, {
