@@ -4,6 +4,7 @@ import { batchAPart0, batchAPart1After, batchAPart1Before, batchAPart2After, bat
 import { batchBPart3, batchBPart4After, batchBPart4Before, batchBPart5 } from './batch-b';
 import { batchCPart6, batchCPart7, batchCPart8Before, batchCPart9 } from './batch-c';
 import { batchDPart10, batchDPart11, batchDPart12, batchDPart13 } from './batch-d';
+import { batchEPart14, batchEPart15After, batchEPart15Before, batchEPart16 } from './batch-e';
 
 export const harmonyBookId = 'harmony' as const;
 const E4: Pitch = { step: 'E', alter: 0, octave: 4 };
@@ -16,7 +17,7 @@ const Cs4: Pitch = { step: 'C', alter: 1, octave: 4 };
 const D4: Pitch = { step: 'D', alter: 0, octave: 4 };
 
 export const harmonyBook: Book = {
-  id: harmonyBookId, schemaVersion, contentVersion: '0.7.0', engineVersion: '0.2.0', subject: 'music', title: '화성학', description: '보고, 듣고, 조작하며 이해하는 화성학 교재', language: 'ko-KR',
+  id: harmonyBookId, schemaVersion, contentVersion: '1.0.0', engineVersion: '0.2.0', subject: 'music', title: '화성학', description: '보고, 듣고, 조작하며 이해하는 화성학 교재', language: 'ko-KR',
   parts: [batchAPart0, { id: 'harmony.part.pitch', title: 'PART 1. 음', lessons: [...batchAPart1Before, {
     id: 'harmony.lesson.semitone', title: '1-2. 반음과 온음', summary: '두 음 사이의 가장 작은 기본 거리를 직접 확인합니다.', estimatedMinutes: 10, prerequisiteRefs: ['harmony.lesson.pitch-properties.lesson'],
     objectives: [{ id: 'harmony.objective.semitone', title: '두 음 사이의 반음 수를 확인하고 반음과 온음을 구별한다.' }],
@@ -70,12 +71,12 @@ export const harmonyBook: Book = {
       { id: 'harmony.block.cadence.listener', blockVersion, type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.quiz'], data: { subject: 'music', tool: 'cadence-listener', title: '새로운 진행을 듣고 판별하기', input: { progressions: [], target: 'authentic', answerTypes: ['authentic', 'half'], hideAnalysisUntilAnswer: true } } },
       { id: 'harmony.block.cadence.summary', blockVersion, type: 'content.summary', objectiveRefs: ['harmony.objective.cadence'], data: { items: ['정격종지는 V에서 I로 해결됩니다.', '반종지는 V에서 멈춥니다.', '마지막 화음과 해결감을 함께 들어야 합니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.cadence.listener'] },
-  }] }, batchCPart9, batchDPart10, batchDPart11, batchDPart12, batchDPart13, { id: 'harmony.part.voice-leading', title: 'PART 15. 성부진행', lessons: [{
-    id: 'harmony.lesson.voice-leading', title: '15-2. 병행5도와 병행8도', summary: '두 성부가 같은 방향으로 움직일 때 생기는 완전음정의 병행을 찾아 고칩니다.', estimatedMinutes: 12, prerequisiteRefs: ['harmony.lesson.interval'], objectives: [{ id: 'harmony.objective.voice-leading', title: '병행5도·8도를 발견하고 한 성부를 수정한다.' }],
+  }] }, batchCPart9, batchDPart10, batchDPart11, batchDPart12, batchDPart13, batchEPart14, { id: 'harmony.part.voice-leading', title: 'PART 15. 성부진행', lessons: [...batchEPart15Before, {
+    id: 'harmony.lesson.voice-leading', title: '15-2. 병행5도와 병행8도', summary: '두 성부가 같은 방향으로 움직일 때 생기는 완전음정의 병행을 찾아 고칩니다.', estimatedMinutes: 12, prerequisiteRefs: ['harmony.lesson.voice-leading-basics.lesson'], objectives: [{ id: 'harmony.objective.voice-leading', title: '병행5도·8도를 발견하고 한 성부를 수정한다.' }],
     blocks: [
       { id: 'harmony.block.voice-leading.concept', blockVersion, type: 'content.markdown', objectiveRefs: ['harmony.objective.voice-leading'], data: { markdown: '두 성부가 같은 방향으로 움직이며 완전5도에서 완전5도, 또는 완전8도에서 완전8도로 이어지면 병행5도·병행8도입니다. 먼저 한 성부의 도착음을 바꾸어 독립적인 선율을 만들어 봅니다.' } },
       { id: 'harmony.block.voice-leading.editor', blockVersion, type: 'activity.subject', objectiveRefs: ['harmony.objective.voice-leading'], data: { subject: 'music', tool: 'voice-leading-editor', title: '반대 방향으로 병행8도 고치기', input: { targetPitch: B4, instruction: '시작음 C5에서 소프라노를 아래 방향으로 한 단계 움직여, 위로 움직이는 베이스와 반대 방향을 만드세요.', value: { id: 'music.voice-leading.parallel-octave', voices: [{ id: 'soprano', name: '소프라노', pitches: [C5, { step: 'D', alter: 0, octave: 5 }] }, { id: 'bass', name: '베이스', pitches: [C4, D4] }] } } } },
       { id: 'harmony.block.voice-leading.summary', blockVersion, type: 'content.summary', objectiveRefs: ['harmony.objective.voice-leading'], data: { items: ['두 성부의 시작과 도착 음정을 함께 봅니다.', '같은 방향의 완전5도·8도 연속을 피합니다.', 'v0.1에서는 한 성부의 도착음 수정에 집중합니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.voice-leading.editor'] },
-  }] }],
+  }, ...batchEPart15After] }, batchEPart16],
 };

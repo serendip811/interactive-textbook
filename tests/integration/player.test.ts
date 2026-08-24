@@ -11,8 +11,10 @@ describe('data-driven player', () => {
   it('reaches batch C after the final seventh-chord lesson', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.seventh-resolution.lesson').next?.id).toBe('harmony.lesson.major-diatonic.lesson'); });
   it('continues from cadence into progression lessons', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.cadence').next?.id).toBe('harmony.lesson.basic-progression.lesson'); });
   it('reaches batch D after batch C', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.common-progressions.lesson').next?.id).toBe('harmony.lesson.passing-tone.lesson'); });
-  it('reaches voice leading after batch D', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.chromatic-modulation.lesson').next?.id).toBe('harmony.lesson.voice-leading'); });
-  it('loads batches A-D and the remaining representative lesson', () => { expect(flattenLessons(loadBook(harmonyBook))).toHaveLength(62); });
+  it('reaches analysis after batch D', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.chromatic-modulation.lesson').next?.id).toBe('harmony.lesson.advanced-roman-analysis.lesson'); });
+  it('keeps the representative voice-leading lesson in batch E order', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.voice-leading-basics.lesson').next?.id).toBe('harmony.lesson.voice-leading'); });
+  it('reaches the final synthesis and ends there', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.comprehensive-practice.lesson').next).toBeUndefined(); });
+  it('loads all 76 RC1 lessons', () => { expect(flattenLessons(loadBook(harmonyBook))).toHaveLength(76); });
   it('loads the functions book and navigates all five lessons', () => { const book = loadBook(functionsBook); expect(flattenLessons(book)).toHaveLength(5); expect(getLessonNavigation(book, 'functions.lesson.coordinates').next?.id).toBe('functions.lesson.input-output'); expect(getLessonNavigation(book, 'functions.lesson.intersection').next).toBeUndefined(); });
   it('fails safely when a book has no lessons', () => { expect(() => loadBook({ ...harmonyBook, parts: [] })).toThrow('표시할 단원'); });
 });
