@@ -64,7 +64,7 @@ export const harmonyBook: Book = {
     blocks: [
       { id: 'harmony.block.cadence.concept', type: 'content.markdown', objectiveRefs: ['harmony.objective.cadence'], data: { markdown: '종지는 음악의 문장 끝에 오는 화음 진행입니다. **정격종지 V–I**는 으뜸화음으로 해결되어 강한 마침을 만들고, **반종지**는 V에서 멈춰 계속될 듯한 느낌을 줍니다.' } },
       { id: 'harmony.block.cadence.player', type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.examples'], data: { subject: 'music', tool: 'progression-player', title: '전체 진행과 한 단계씩 비교하기', input: { progressions: [] } } },
-      { id: 'harmony.block.cadence.listener', type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.quiz'], data: { subject: 'music', tool: 'cadence-listener', title: '새로운 진행을 듣고 판별하기', input: { progressions: [], target: 'authentic', hideAnalysisUntilAnswer: true } } },
+      { id: 'harmony.block.cadence.listener', type: 'activity.subject', objectiveRefs: ['harmony.objective.cadence'], dataRefs: ['harmony.data.cadence.quiz'], data: { subject: 'music', tool: 'cadence-listener', title: '새로운 진행을 듣고 판별하기', input: { progressions: [], target: 'authentic', answerTypes: ['authentic', 'half'], hideAnalysisUntilAnswer: true } } },
       { id: 'harmony.block.cadence.summary', type: 'content.summary', objectiveRefs: ['harmony.objective.cadence'], data: { items: ['정격종지는 V에서 I로 해결됩니다.', '반종지는 V에서 멈춥니다.', '마지막 화음과 해결감을 함께 들어야 합니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.cadence.listener'] },
   }, {
