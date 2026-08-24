@@ -33,7 +33,7 @@ export function validateLinearParameters(target: LinearFunction, selected: Linea
   const slopeMatch = target.slope === selected.slope; const interceptMatch = target.intercept === selected.intercept;
   if (slopeMatch && interceptMatch) return { correct: true, message: `정답입니다. ${formatLinear(selected)} 직선을 만들었습니다.` };
   if (!slopeMatch && !interceptMatch) return { correct: false, message: `기울기와 y절편을 모두 다시 확인하세요. 현재 식은 ${formatLinear(selected)}입니다.` };
-  return { correct: false, message: `${slopeMatch ? '기울기는 맞습니다. y절편' : 'y절편은 맞습니다. 기울기'}을 다시 조정하세요.` };
+  return { correct: false, message: slopeMatch ? '기울기는 맞습니다. y절편을 다시 조정하세요.' : 'y절편은 맞습니다. 기울기를 다시 조정하세요.' };
 }
 export function validateIntersection(expected: Intersection, selected: Point): MathFeedback {
   if (expected.kind !== 'point') return { correct: false, message: expected.kind === 'parallel' ? '두 직선은 평행하여 교점이 없습니다.' : '두 직선이 일치하여 교점이 하나로 정해지지 않습니다.' };
