@@ -8,6 +8,7 @@
     "audit:rc1": "node scripts/audit-rc1.mjs",
     "extract:harmony:batch-a": "node scripts/extract-harmony-batch-a.mjs",
     "extract:harmony:batch-b": "node scripts/extract-harmony-batch-b.mjs",
+    "extract:harmony:batch-c": "node scripts/extract-harmony-batch-c.mjs",
     "build": "pnpm --filter @interactive-textbook/player build",
     "dev": "pnpm --filter @interactive-textbook/player dev",
     "format": "prettier --write .",
