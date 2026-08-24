@@ -11,6 +11,7 @@ import {
 import { MusicActivity } from './MusicActivity';
 import { ProgressionActivity } from './ProgressionActivity';
 import { VoiceLeadingActivity } from './VoiceLeadingActivity';
+import { MathActivity } from './MathActivity';
 
 function renderInlineMarkdown(text: string): ReactNode[] {
   return text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean).map((part, index) => {
@@ -39,6 +40,7 @@ function MultipleChoiceBlock({ data, onSubmit }: { data: MultipleChoiceBlockData
   </form>;
 }
 function SubjectActivityBlock({ data, referencedData, onComplete }: { data: SubjectActivityBlockData; referencedData?: unknown[]; onComplete?: (result: unknown) => void }) {
+  if (data.subject === 'math' && ['point-plotter', 'function-machine', 'line-builder', 'intersection-finder'].includes(data.tool)) return <MathActivity tool={data.tool} title={data.title} input={data.input as never} onComplete={onComplete} />;
   if (data.subject === 'music' && data.tool === 'voice-leading-editor') return <VoiceLeadingActivity title={data.title} input={data.input as never} onComplete={onComplete} />;
   if (data.subject === 'music' && ['progression-player', 'cadence-listener'].includes(data.tool)) { const input = data.input as { progressions?: unknown[] }; return <ProgressionActivity tool={data.tool} title={data.title} input={{ ...input, progressions: input.progressions?.length ? input.progressions : referencedData?.[0] } as never} onComplete={onComplete} />; }
   if (data.subject === 'music' && ['pitch-pair-viewer', 'semitone-explorer', 'interval-builder', 'chord-builder'].includes(data.tool)) return <MusicActivity tool={data.tool} title={data.title} input={data.input as never} onComplete={onComplete as never} />;

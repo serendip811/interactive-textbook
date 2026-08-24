@@ -4,5 +4,9 @@
   "private": true,
   "type": "module",
   "exports": "./src/index.ts",
-  "types": "./src/index.ts"
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@interactive-textbook/schema": "workspace:*",
+    "@interactive-textbook/subject-math": "workspace:*"
+  }
 }

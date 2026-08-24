@@ -11,10 +11,12 @@
   "dependencies": {
     "@interactive-textbook/common-blocks": "workspace:*",
     "@interactive-textbook/book-harmony": "workspace:*",
+    "@interactive-textbook/book-functions": "workspace:*",
     "@interactive-textbook/engine-player": "workspace:*",
     "@interactive-textbook/learning-state": "workspace:*",
     "@interactive-textbook/schema": "workspace:*",
     "@interactive-textbook/subject-music": "workspace:*",
+    "@interactive-textbook/subject-math": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   }
