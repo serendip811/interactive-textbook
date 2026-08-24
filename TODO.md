@@ -623,14 +623,14 @@ verified_expanded_vexflow_rc1
 
 ### 4.2 수학 의미 데이터
 
-- [ ] `Point` 타입을 정의한다.
-- [ ] `Axis`와 좌표 범위를 정의한다.
-- [ ] `Function` 기본 타입을 정의한다.
-- [ ] `LinearFunction` 타입을 정의한다.
-- [ ] `Parameter` 타입을 정의한다.
-- [ ] `Intersection` 결과 타입을 정의한다.
-- [ ] 수식과 값의 표가 같은 데이터에서 생성되게 한다.
-- [ ] 그래프와 계산 결과가 같은 데이터에서 생성되게 한다.
+- [x] `Point` 타입을 정의한다.
+- [x] `Axis`와 좌표 범위를 정의한다.
+- [x] `Function` 기본 타입을 정의한다.
+- [x] `LinearFunction` 타입을 정의한다.
+- [x] `Parameter` 타입을 정의한다.
+- [x] `Intersection` 결과 타입을 정의한다.
+- [x] 수식과 값의 표가 같은 데이터에서 생성되게 한다.
+- [x] 그래프와 계산 결과가 같은 데이터에서 생성되게 한다.
 
 ### 4.3 수학 View와 Activity
 
