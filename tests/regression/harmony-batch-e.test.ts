@@ -6,6 +6,8 @@ import { pitchName,type Pitch } from '../../subjects/music/src';
 
 const ids=['harmony.part.analysis','harmony.part.voice-leading','harmony.part.styles'];
 const lessons=harmonyBook.parts.filter((part)=>ids.includes(part.id)).flatMap((part)=>part.lessons);
+const lessonById=(id:string)=>lessons.find((lesson)=>lesson.id===id);
+const groupNames=(id:string)=>(lessonById(id)?.data?.[0].value as Pitch[][]).map((group)=>group.map(pitchName));
 
 describe('Harmony batch E migration',()=>{
   it('contains all PART 14-16 lessons in RC1 order',()=>{
@@ -21,6 +23,33 @@ describe('Harmony batch E migration',()=>{
   it('preserves F-sharp in the applied-dominant score analysis',()=>{
     const item=lessons.find((lesson)=>lesson.id==='harmony.lesson.score-analysis-practice.lesson');
     const names=(item?.data?.[0].value as Pitch[][]).flat().map(pitchName);expect(names).toContain('F♯4');
+  });
+  it('plays every generic PART 14-16 pitch group as a simultaneous chord',()=>{
+    for(const item of lessons){
+      const block=item.blocks.find((candidate)=>candidate.type==='activity.subject');
+      if((block?.data as {tool?:string}).tool!=='pitch-pair-viewer')continue;
+      expect((block?.data as {input:{playbackMode?:string}}).input.playbackMode,item.id).toBe('simultaneous');
+    }
+  });
+  it('uses close SATB motion in the voice-leading introduction',()=>{
+    expect(groupNames('harmony.lesson.voice-leading-basics.lesson')).toEqual([
+      ['C3','C4','E4','G4'],
+      ['G3','B3','D4','G4'],
+    ]);
+  });
+  it('resolves the V7 tendency tones correctly in the cadence example',()=>{
+    expect(groupNames('harmony.lesson.cadence-writing.lesson')).toEqual([
+      ['G3','D4','F4','B4'],
+      ['C3','C4','E4','C5'],
+    ]);
+  });
+  it('keeps the I-IV-V-I exercise in consistent bass-to-soprano order',()=>{
+    expect(groupNames('harmony.lesson.four-part-harmony.lesson')).toEqual([
+      ['C3','C4','E4','G4'],
+      ['F3','C4','F4','A4'],
+      ['G3','B3','D4','G4'],
+      ['C3','C4','E4','G4'],
+    ]);
   });
   it('completes the full 76-lesson RC1 inventory',()=>{expect(harmonyBook.parts.flatMap((part)=>part.lessons)).toHaveLength(76);});
   it('passes schema, ID, reference and block validation',()=>{expect(validateBook(harmonyBook,{supportedBlockTypes:commonBlockKinds})).toEqual([]);});
