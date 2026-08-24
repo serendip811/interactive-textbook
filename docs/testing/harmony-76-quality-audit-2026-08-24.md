@@ -27,6 +27,6 @@
 4. 모바일 390px 및 실제 iPhone 상호작용 검수
 
 PART 0~5 결과는 `docs/testing/harmony-part0-5-media-review-2026-08-24.md`에 기록했다.
-PART 6~13 결과는 `docs/testing/harmony-part6-13-content-review-2026-08-24.md`에 기록했다. 외부 전문 감수와 실제 iPhone 검수는 별도 단계로 남긴다.
+PART 6~13 결과는 `docs/testing/harmony-part6-13-content-review-2026-08-24.md`에 기록했다. CI와 Pages 배포 및 변경 대상 표적 재검수까지 통과했으며, 외부 전문 감수와 실제 iPhone 검수는 별도 단계로 남긴다.
 
 이 문서는 자동화 가능한 검수만 다루며 `내용 검수` 또는 `상호작용 검수` 완료를 의미하지 않는다.
