@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { harmonyBook } from '../../books/harmony/src';
 
-const lesson = harmonyBook.parts[0].lessons.find((item) => item.id === 'harmony.lesson.voice-leading');
+const lesson = harmonyBook.parts.flatMap((part) => part.lessons).find((item) => item.id === 'harmony.lesson.voice-leading');
 
 describe('voice-leading representative lesson content', () => {
   it('states the starting pitch and contrary-motion goal without revealing the answer', () => {
