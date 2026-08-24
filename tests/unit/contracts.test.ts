@@ -9,6 +9,13 @@ describe('engine runtime contracts', () => {
     expect(registry.resolve('music', 'pitch-name')?.run('C4')).toBe('C4');
     expect(registry.resolve('math', 'linear-value')?.run(3)).toBe(7);
   });
+  it('rejects duplicate subject tool registrations and lists tools by subject', () => {
+    const registry = new SubjectToolRegistry();
+    registry.register({ subject: 'science', kind: 'vector-builder', version: '1.0.0', engineVersion: '0.2.0', run: (value) => value });
+    expect(() => registry.register({ subject: 'science', kind: 'vector-builder', run: (value) => value })).toThrow('already registered');
+    expect(registry.list('science').map((tool) => tool.kind)).toEqual(['vector-builder']);
+    expect(registry.list('music')).toEqual([]);
+  });
   it('uses subject-neutral activity and assessment event names', () => {
     const events: EngineEvent[] = [
       { type: 'activity.completed', activityId: 'example.activity', timestamp: '2026-08-24T00:00:00.000Z' },

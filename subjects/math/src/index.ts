@@ -9,6 +9,22 @@ export interface Parameter { id: 'slope' | 'intercept' | string; label: string; 
 export type Intersection = { kind: 'point'; point: Point } | { kind: 'parallel' } | { kind: 'coincident' };
 export interface MathFeedback { correct: boolean; message: string; }
 
+export function validateCoordinatePlane(plane: CoordinatePlane): string[] {
+  const issues: string[] = [];
+  for (const [name, axis] of [['x', plane.xAxis], ['y', plane.yAxis]] as const) {
+    if (![axis.min, axis.max, axis.step].every(Number.isFinite)) issues.push(`${name}축 범위는 유한한 숫자여야 합니다.`);
+    if (axis.min >= axis.max) issues.push(`${name}축 최솟값은 최댓값보다 작아야 합니다.`);
+    if (axis.step <= 0) issues.push(`${name}축 간격은 0보다 커야 합니다.`);
+  }
+  return issues;
+}
+export function validateLinearFunctionData(fn: LinearFunction, plane?: CoordinatePlane): string[] {
+  const issues = [fn.slope, fn.intercept].every(Number.isFinite) ? [] : ['기울기와 절편은 유한한 숫자여야 합니다.'];
+  if (!fn.id) issues.push('함수 ID가 필요합니다.');
+  if (plane) issues.push(...validateCoordinatePlane(plane));
+  return issues;
+}
+
 export function evaluateLinear(fn: LinearFunction, x: number): number { return fn.slope * x + fn.intercept; }
 export function tableForLinear(fn: LinearFunction, xValues: number[]): Point[] { return xValues.map((x) => ({ x, y: evaluateLinear(fn, x) })); }
 export function formatNumber(value: number): string { return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(2))); }

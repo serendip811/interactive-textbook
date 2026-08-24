@@ -5,7 +5,7 @@ import { schemaVersion } from '../../engine/schema/src';
 
 describe('Phase 1 foundation', () => {
   it('exposes the initial schema version', () => {
-    expect(schemaVersion).toBe('0.1.0');
+    expect(schemaVersion).toBe('0.2.0');
   });
 
   it('keeps common blocks independent from subject blocks', () => {

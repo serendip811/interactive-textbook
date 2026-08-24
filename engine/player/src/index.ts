@@ -1,4 +1,4 @@
-import type { Block, Book, ContentId, Lesson, Part } from '@interactive-textbook/schema';
+import { validateBook, type Block, type Book, type ContentId, type Lesson, type Part } from '@interactive-textbook/schema';
 
 export const engineAreas = ['content', 'rendering', 'navigation', 'events'] as const;
 export type EngineArea = (typeof engineAreas)[number];
@@ -22,11 +22,24 @@ export interface LearningStateRepository {
   remove(learnerId: string, contentId: ContentId): Promise<void>;
 }
 
-export interface SubjectTool<TInput = unknown, TOutput = unknown> { subject: string; kind: string; run(input: TInput): TOutput; }
+export interface SubjectTool<TInput = unknown, TOutput = unknown> {
+  subject: string;
+  kind: string;
+  version?: string;
+  engineVersion?: string;
+  run(input: TInput): TOutput;
+  validateInput?: (input: unknown) => input is TInput;
+  accessibleSummary?: (input: TInput) => string;
+}
 export class SubjectToolRegistry {
   private readonly tools = new Map<string, SubjectTool>();
-  register(tool: SubjectTool): void { this.tools.set(`${tool.subject}:${tool.kind}`, tool); }
+  register(tool: SubjectTool): void {
+    const key = `${tool.subject}:${tool.kind}`;
+    if (this.tools.has(key)) throw new Error(`Subject tool already registered: ${key}`);
+    this.tools.set(key, tool);
+  }
   resolve(subject: string, kind: string): SubjectTool | undefined { return this.tools.get(`${subject}:${kind}`); }
+  list(subject?: string): SubjectTool[] { return [...this.tools.values()].filter((tool) => !subject || tool.subject === subject); }
 }
 
 export type EngineEvent =
@@ -68,6 +81,8 @@ export function getLessonNavigation(book: Book, id: ContentId): LessonNavigation
 }
 export function loadBook(input: Book): Book {
   if (!input.parts.length || !flattenLessons(input).length) throw new Error('교재에 표시할 단원이 없습니다.');
+  const issues = validateBook(input);
+  if (issues.length) throw new Error(`교재 콘텐츠 검증에 실패했습니다: ${issues[0].message}`);
   return input;
 }
 export type BlockRendererContract = (block: Block) => unknown;
