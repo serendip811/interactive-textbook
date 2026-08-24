@@ -12,6 +12,7 @@
     "extract:harmony:batch-d": "node scripts/extract-harmony-batch-d.mjs",
     "extract:harmony:batch-e": "node scripts/extract-harmony-batch-e.mjs",
     "extract:harmony:checkpoints": "node scripts/extract-harmony-checkpoints.mjs",
+    "generate:harmony:checkpoints": "node scripts/generate-harmony-checkpoint-blocks.mjs",
     "build": "pnpm --filter @interactive-textbook/player build",
     "dev": "pnpm --filter @interactive-textbook/player dev",
     "format": "prettier --write .",

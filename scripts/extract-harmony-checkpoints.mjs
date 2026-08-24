@@ -13,14 +13,15 @@ const sectionPattern=/<section class="part-checkpoint" id="checkpoint-(\d+)">([\
 let section;
 while((section=sectionPattern.exec(html))){
   const part=Number(section[1]); const questions=[];
-  const questionPattern=/<div class="rc-q" data-answer="([^"]+)">([\s\S]*?)<\/div>\s*<\/div>/g;
-  let question;
-  while((question=questionPattern.exec(section[2]))){
-    const body=question[2];
+  const chunks=section[2].split('<div class="rc-q"').slice(1);
+  for(const chunk of chunks){
+    const answer=chunk.match(/^\s*data-answer="([^"]+)">/)?.[1];
+    if(!answer)continue;
+    const body=chunk;
     const prompt=clean(body.match(/<div class="rc-question">([\s\S]*?)<\/div>/)?.[1]??'').replace(/^\d+\.\s*/, '');
     const options=[...body.matchAll(/<button data-value="([^"]+)"[^>]*>([\s\S]*?)<\/button>/g)].map((item)=>({value:clean(item[1]),label:clean(item[2])}));
     const explanation=clean(body.match(/<div class="rc-explain">([\s\S]*?)<\/div>/)?.[1]??'');
-    questions.push({id:`harmony.rc1.checkpoint.${part}.${questions.length+1}`,prompt,options,answer:clean(question[1]),explanation});
+    questions.push({id:`harmony.rc1.checkpoint.${part}.${questions.length+1}`,prompt,options,answer:clean(answer),explanation});
   }
   checkpoints.push({part,id:`checkpoint-${part}`,questions});
 }

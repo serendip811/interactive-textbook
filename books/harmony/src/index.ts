@@ -5,6 +5,7 @@ import { batchBPart3, batchBPart4After, batchBPart4Before, batchBPart5 } from '.
 import { batchCPart6, batchCPart7, batchCPart8Before, batchCPart9 } from './batch-c';
 import { batchDPart10, batchDPart11, batchDPart12, batchDPart13 } from './batch-d';
 import { batchEPart14, batchEPart15After, batchEPart15Before, batchEPart16 } from './batch-e';
+import { attachLegacyCheckpoints } from './legacy-checkpoints.generated';
 
 export const harmonyBookId = 'harmony' as const;
 const E4: Pitch = { step: 'E', alter: 0, octave: 4 };
@@ -16,8 +17,8 @@ const C4: Pitch = { step: 'C', alter: 0, octave: 4 };
 const Cs4: Pitch = { step: 'C', alter: 1, octave: 4 };
 const D4: Pitch = { step: 'D', alter: 0, octave: 4 };
 
-export const harmonyBook: Book = {
-  id: harmonyBookId, schemaVersion, contentVersion: '1.0.0', engineVersion: '0.2.0', subject: 'music', title: '화성학', description: '보고, 듣고, 조작하며 이해하는 화성학 교재', language: 'ko-KR',
+export const harmonyBook: Book = attachLegacyCheckpoints({
+  id: harmonyBookId, schemaVersion, contentVersion: '1.1.0', engineVersion: '0.2.0', subject: 'music', title: '화성학', description: '보고, 듣고, 조작하며 이해하는 화성학 교재', language: 'ko-KR',
   parts: [batchAPart0, { id: 'harmony.part.pitch', title: 'PART 1. 음', lessons: [...batchAPart1Before, {
     id: 'harmony.lesson.semitone', title: '1-2. 반음과 온음', summary: '두 음 사이의 가장 작은 기본 거리를 직접 확인합니다.', estimatedMinutes: 10, prerequisiteRefs: ['harmony.lesson.pitch-properties.lesson'],
     objectives: [{ id: 'harmony.objective.semitone', title: '두 음 사이의 반음 수를 확인하고 반음과 온음을 구별한다.' }],
@@ -79,4 +80,4 @@ export const harmonyBook: Book = {
       { id: 'harmony.block.voice-leading.summary', blockVersion, type: 'content.summary', objectiveRefs: ['harmony.objective.voice-leading'], data: { items: ['두 성부의 시작과 도착 음정을 함께 봅니다.', '같은 방향의 완전5도·8도 연속을 피합니다.', 'v0.1에서는 한 성부의 도착음 수정에 집중합니다.'] } },
     ], completion: { type: 'required-blocks', blockRefs: ['harmony.block.voice-leading.editor'] },
   }, ...batchEPart15After] }, batchEPart16],
-};
+});

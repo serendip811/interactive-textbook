@@ -45,7 +45,7 @@
             }
           ],
           "answer": "온-온-반-온-온-온-반",
-          "explanation": ""
+          "explanation": "장음계는 온-온-반-온-온-온-반의 구조를 가진다."
         },
         {
           "id": "harmony.rc1.checkpoint.3.2",
@@ -69,7 +69,7 @@
             }
           ],
           "answer": "F♯ 1개",
-          "explanation": ""
+          "explanation": "G장조는 F♯ 한 음을 올린다."
         },
         {
           "id": "harmony.rc1.checkpoint.3.3",
@@ -93,7 +93,7 @@
             }
           ],
           "answer": "A단조",
-          "explanation": ""
+          "explanation": "나란한조는 같은 조표를 공유하며 C장조의 나란한 단조는 A단조다."
         },
         {
           "id": "harmony.rc1.checkpoint.3.4",
@@ -117,7 +117,7 @@
             }
           ],
           "answer": "G장조",
-          "explanation": ""
+          "explanation": "시계방향은 완전5도 위로 이동하며 샵이 하나 증가한다."
         }
       ]
     },
@@ -147,7 +147,7 @@
             }
           ],
           "answer": "장3도 + 단3도",
-          "explanation": ""
+          "explanation": "장3화음은 근음-3음이 장3도, 3음-5음이 단3도다."
         },
         {
           "id": "harmony.rc1.checkpoint.4.2",
@@ -171,7 +171,7 @@
             }
           ],
           "answer": "E-G-C",
-          "explanation": ""
+          "explanation": "제1전위는 3음이 베이스에 온다."
         },
         {
           "id": "harmony.rc1.checkpoint.4.3",
@@ -195,7 +195,7 @@
             }
           ],
           "answer": "단3도 + 단3도",
-          "explanation": ""
+          "explanation": "감3화음은 두 개의 단3도를 쌓는다."
         },
         {
           "id": "harmony.rc1.checkpoint.4.4",
@@ -219,7 +219,7 @@
             }
           ],
           "answer": "조성 안의 상대적 기능을 보여준다",
-          "explanation": ""
+          "explanation": "로마숫자는 조가 바뀌어도 도수와 기능 관계를 유지한다."
         }
       ]
     },
@@ -249,7 +249,7 @@
             }
           ],
           "answer": "장3화음 + 단7도",
-          "explanation": ""
+          "explanation": "V7은 장3화음 위에 단7도가 더해진 구조다."
         },
         {
           "id": "harmony.rc1.checkpoint.5.2",
@@ -273,7 +273,7 @@
             }
           ],
           "answer": "7음",
-          "explanation": ""
+          "explanation": "제3전위에서는 화음의 7음이 최저음이다."
         },
         {
           "id": "harmony.rc1.checkpoint.5.3",
@@ -297,7 +297,7 @@
             }
           ],
           "answer": "E로 하행",
-          "explanation": ""
+          "explanation": "화음의 7음은 일반적으로 순차 하행한다."
         },
         {
           "id": "harmony.rc1.checkpoint.5.4",
@@ -321,7 +321,7 @@
             }
           ],
           "answer": "C로 상행",
-          "explanation": ""
+          "explanation": "B는 C장조의 이끎음이므로 C로 해결하는 경향이 강하다."
         }
       ]
     },
@@ -351,7 +351,7 @@
             }
           ],
           "answer": "대-소-소-대-대-소-감",
-          "explanation": ""
+          "explanation": "I ii iii IV V vi vii°의 화음 성질이다."
         },
         {
           "id": "harmony.rc1.checkpoint.6.2",
@@ -375,7 +375,7 @@
             }
           ],
           "answer": "Dm",
-          "explanation": ""
+          "explanation": "2도 D 위에 다이어토닉 3도를 쌓으면 D-F-A, Dm이다."
         },
         {
           "id": "harmony.rc1.checkpoint.6.3",
@@ -399,7 +399,7 @@
             }
           ],
           "answer": "T → PD → D → T",
-          "explanation": ""
+          "explanation": "안정에서 준비, 긴장, 해결로 향하는 흐름이 기본이다."
         },
         {
           "id": "harmony.rc1.checkpoint.6.4",
@@ -423,7 +423,7 @@
             }
           ],
           "answer": "7음을 올려 이끎음을 만든다",
-          "explanation": ""
+          "explanation": "화성단음계의 올린 7음이 장도미넌트와 이끎음을 만든다."
         }
       ]
     },
@@ -453,7 +453,7 @@
             }
           ],
           "answer": "I",
-          "explanation": ""
+          "explanation": "I는 조성 중심을 가장 직접적으로 확립한다."
         },
         {
           "id": "harmony.rc1.checkpoint.7.2",
@@ -477,7 +477,7 @@
             }
           ],
           "answer": "ii와 IV",
-          "explanation": ""
+          "explanation": "ii와 IV는 도미넌트를 준비하는 대표 화음이다."
         },
         {
           "id": "harmony.rc1.checkpoint.7.3",
@@ -501,7 +501,7 @@
             }
           ],
           "answer": "V와 vii°",
-          "explanation": ""
+          "explanation": "V와 vii°는 이끎음을 포함해 토닉으로 강하게 향한다."
         },
         {
           "id": "harmony.rc1.checkpoint.7.4",
@@ -525,7 +525,7 @@
             }
           ],
           "answer": "T-T-PD-D-T",
-          "explanation": ""
+          "explanation": "vi는 토닉 영역, ii는 프리도미넌트, V는 도미넌트다."
         }
       ]
     },
@@ -555,7 +555,7 @@
             }
           ],
           "answer": "V → I",
-          "explanation": ""
+          "explanation": "도미넌트에서 토닉으로 해결한다."
         },
         {
           "id": "harmony.rc1.checkpoint.8.2",
@@ -579,7 +579,7 @@
             }
           ],
           "answer": "V",
-          "explanation": ""
+          "explanation": "V에서 멈춰 열린 느낌을 남긴다."
         },
         {
           "id": "harmony.rc1.checkpoint.8.3",
@@ -603,7 +603,7 @@
             }
           ],
           "answer": "V → vi",
-          "explanation": ""
+          "explanation": "예상된 I 대신 vi 등으로 진행해 종결을 미룬다."
         },
         {
           "id": "harmony.rc1.checkpoint.8.4",
@@ -627,7 +627,7 @@
             }
           ],
           "answer": "IV → I",
-          "explanation": ""
+          "explanation": "IV에서 I로 진행하는 부드러운 종결이다."
         }
       ]
     },
@@ -657,7 +657,7 @@
             }
           ],
           "answer": "5도 하행/4도 상행",
-          "explanation": ""
+          "explanation": "D→G→C처럼 강한 5도 순환을 만든다."
         },
         {
           "id": "harmony.rc1.checkpoint.9.2",
@@ -681,7 +681,7 @@
             }
           ],
           "answer": "로마숫자 구조",
-          "explanation": ""
+          "explanation": "전조해도 상대적 도수 구조는 유지된다."
         },
         {
           "id": "harmony.rc1.checkpoint.9.3",
@@ -705,7 +705,7 @@
             }
           ],
           "answer": "같은 음정/화성 패턴의 반복",
-          "explanation": ""
+          "explanation": "패턴이 다른 음높이에서 반복되는 것이 핵심이다."
         },
         {
           "id": "harmony.rc1.checkpoint.9.4",
@@ -729,7 +729,7 @@
             }
           ],
           "answer": "안정과 강조를 만든다",
-          "explanation": ""
+          "explanation": "화성 변화가 적어 다른 요소를 강조할 수 있다."
         }
       ]
     },
@@ -759,7 +759,7 @@
             }
           ],
           "answer": "두 화음음을 순차적으로 연결",
-          "explanation": ""
+          "explanation": "경과음은 화음음 사이를 순차 연결한다."
         },
         {
           "id": "harmony.rc1.checkpoint.10.2",
@@ -783,7 +783,7 @@
             }
           ],
           "answer": "인접음으로 벗어났다가 원음으로 복귀",
-          "explanation": ""
+          "explanation": "출발한 화음음으로 돌아온다."
         },
         {
           "id": "harmony.rc1.checkpoint.10.3",
@@ -807,7 +807,7 @@
             }
           ],
           "answer": "준비-계류-해결",
-          "explanation": ""
+          "explanation": "앞 화음에서 준비된 음이 유지되어 불협화를 만든 뒤 해결한다."
         },
         {
           "id": "harmony.rc1.checkpoint.10.4",
@@ -831,7 +831,7 @@
             }
           ],
           "answer": "다음 화음의 음",
-          "explanation": ""
+          "explanation": "새 화음의 구성음이 화음 변화보다 먼저 나온다."
         }
       ]
     },
@@ -861,7 +861,7 @@
             }
           ],
           "answer": "D 또는 D7",
-          "explanation": ""
+          "explanation": "G(V)의 도미넌트는 D다."
         },
         {
           "id": "harmony.rc1.checkpoint.11.2",
@@ -885,7 +885,7 @@
             }
           ],
           "answer": "F♯",
-          "explanation": ""
+          "explanation": "G의 이끎음 F♯ 위에 감화음을 만든다."
         },
         {
           "id": "harmony.rc1.checkpoint.11.3",
@@ -909,7 +909,7 @@
             }
           ],
           "answer": "다른 다이어토닉 화음을 잠시 토닉화",
-          "explanation": ""
+          "explanation": "목표 화음을 일시적 중심처럼 들리게 한다."
         },
         {
           "id": "harmony.rc1.checkpoint.11.4",
@@ -933,7 +933,7 @@
             }
           ],
           "answer": "새 조의 지속성과 기능 확립 정도",
-          "explanation": ""
+          "explanation": "전조는 새로운 조의 기능과 종지가 더 지속적으로 확립된다."
         }
       ]
     },
@@ -963,7 +963,7 @@
             }
           ],
           "answer": "같은 으뜸음의 다른 모드에서 화음을 차용",
-          "explanation": ""
+          "explanation": "평행조/평행모드에서 색채 화음을 빌려온다."
         },
         {
           "id": "harmony.rc1.checkpoint.12.2",
@@ -987,7 +987,7 @@
             }
           ],
           "answer": "Fm(iv)",
-          "explanation": ""
+          "explanation": "Fm은 C단조에서 빌린 iv다."
         },
         {
           "id": "harmony.rc1.checkpoint.12.3",
@@ -1011,7 +1011,7 @@
             }
           ],
           "answer": "♭II 장3화음의 제1전위",
-          "explanation": ""
+          "explanation": "전통적으로 ♭II의 장화음을 1전위로 쓰는 경우가 많다."
         },
         {
           "id": "harmony.rc1.checkpoint.12.4",
@@ -1035,7 +1035,7 @@
             }
           ],
           "answer": "♭6과 ♯4",
-          "explanation": ""
+          "explanation": "두 음이 바깥 방향으로 벌어져 V의 근음으로 해결한다."
         }
       ]
     },
@@ -1065,7 +1065,7 @@
             }
           ],
           "answer": "조성 중심이 다른 조로 이동하는 것",
-          "explanation": ""
+          "explanation": "새로운 조의 기능과 종지가 일정 시간 확립된다."
         },
         {
           "id": "harmony.rc1.checkpoint.13.2",
@@ -1089,7 +1089,7 @@
             }
           ],
           "answer": "두 조에 모두 속하는 화음",
-          "explanation": ""
+          "explanation": "하나의 화음을 앞뒤 조에서 다르게 해석한다."
         },
         {
           "id": "harmony.rc1.checkpoint.13.3",
@@ -1113,7 +1113,7 @@
             }
           ],
           "answer": "공통화음 없이 곧바로 새 조로 이동",
-          "explanation": ""
+          "explanation": "강한 대비를 만들 수 있다."
         },
         {
           "id": "harmony.rc1.checkpoint.13.4",
@@ -1137,7 +1137,7 @@
             }
           ],
           "answer": "두 조가 공유하는 하나의 음",
-          "explanation": ""
+          "explanation": "한 음을 지속하며 주변 화음의 기능을 바꾼다."
         }
       ]
     },
@@ -1167,7 +1167,7 @@
             }
           ],
           "answer": "조성 파악",
-          "explanation": ""
+          "explanation": "조성을 알아야 로마숫자와 기능을 올바르게 판단할 수 있다."
         },
         {
           "id": "harmony.rc1.checkpoint.14.2",
@@ -1191,7 +1191,7 @@
             }
           ],
           "answer": "이 화음이 조성의 몇 도에 있는가",
-          "explanation": ""
+          "explanation": "화음의 조성 내 상대적 위치와 성질을 표현한다."
         },
         {
           "id": "harmony.rc1.checkpoint.14.3",
@@ -1215,7 +1215,7 @@
             }
           ],
           "answer": "여러 화음을 더 큰 역할 단위로 묶는다",
-          "explanation": ""
+          "explanation": "T/PD/D 같은 거시적 방향을 파악한다."
         },
         {
           "id": "harmony.rc1.checkpoint.14.4",
@@ -1239,7 +1239,7 @@
             }
           ],
           "answer": "악절과 형식의 경계를 드러낸다",
-          "explanation": ""
+          "explanation": "종지 강도와 위치는 구조적 위계를 보여준다."
         }
       ]
     },
@@ -1269,7 +1269,7 @@
             }
           ],
           "answer": "공통음을 유지하고 나머지는 가까운 음으로 이동",
-          "explanation": ""
+          "explanation": "최소 이동은 부드러운 성부진행에 도움이 된다."
         },
         {
           "id": "harmony.rc1.checkpoint.15.2",
@@ -1293,7 +1293,7 @@
             }
           ],
           "answer": "병행5도와 병행8도",
-          "explanation": ""
+          "explanation": "성부 독립성을 약화시키는 대표적 금지 병행이다."
         },
         {
           "id": "harmony.rc1.checkpoint.15.3",
@@ -1317,7 +1317,7 @@
             }
           ],
           "answer": "각각 옥타브 이내",
-          "explanation": ""
+          "explanation": "상3성부의 인접 성부 간격은 보통 옥타브 이내다."
         },
         {
           "id": "harmony.rc1.checkpoint.15.4",
@@ -1341,7 +1341,7 @@
             }
           ],
           "answer": "순차 하행",
-          "explanation": ""
+          "explanation": "7음의 불협화는 보통 한 음 아래로 해결한다."
         }
       ]
     },
@@ -1371,7 +1371,7 @@
             }
           ],
           "answer": "기능·비화성음·성부진행·종지",
-          "explanation": ""
+          "explanation": "코랄은 여러 화성 요소를 통합해 보는 자료다."
         },
         {
           "id": "harmony.rc1.checkpoint.16.2",
@@ -1395,7 +1395,7 @@
             }
           ],
           "answer": "명확한 기능과 종지 구조",
-          "explanation": ""
+          "explanation": "기능적 명료성과 균형 잡힌 악절이 중요하다."
         },
         {
           "id": "harmony.rc1.checkpoint.16.3",
@@ -1419,7 +1419,7 @@
             }
           ],
           "answer": "반음계와 색채적 전조",
-          "explanation": ""
+          "explanation": "차용화음·공통음·반음계적 재해석이 확대된다."
         },
         {
           "id": "harmony.rc1.checkpoint.16.4",
@@ -1443,7 +1443,7 @@
             }
           ],
           "answer": "기능과 루프/모달 색채를 함께 본다",
-          "explanation": ""
+          "explanation": "기능적이지 않은 반복과 색채 진행도 함께 고려해야 한다."
         }
       ]
     }

@@ -34,4 +34,14 @@ describe('Harmony 76-lesson quality gates',()=>{
     expect(checkpointData.checkpointCount).toBe(14);expect(checkpointData.questionCount).toBe(56);
     for(const checkpoint of checkpointData.checkpoints)for(const question of checkpoint.questions)expect(question.options.some((option)=>option.value===question.answer)).toBe(true);
   });
+  it('attaches all 56 RC1 checkpoint questions to their mapped lessons and completion rules',()=>{
+    const checkpointBlocks=lessons.flatMap((lesson)=>lesson.blocks.filter((block)=>block.id.startsWith('harmony.checkpoint.')).map((block)=>({lesson,block})));
+    expect(checkpointBlocks).toHaveLength(56);
+    for(const {lesson,block} of checkpointBlocks){
+      expect(block.type).toBe('assessment.multiple-choice');
+      expect((block.data as {explanation:string}).explanation.trim(),block.id).not.toBe('');
+      expect(lesson.completion.type).toBe('required-blocks');
+      if(lesson.completion.type==='required-blocks')expect(lesson.completion.blockRefs).toContain(block.id);
+    }
+  });
 });
