@@ -28,7 +28,10 @@ describe('Harmony PART 0-5 media consistency', () => {
       if (!input.pairs || !block.dataRefs?.length) continue;
       const source = lesson.data?.find((entry) => entry.id === block.dataRefs?.[0]);
       expect(source, block.id).toBeDefined();
-      expect(input.pairs, block.id).toEqual(source?.value);
+      const canonicalGroups = source?.kind === 'chords'
+        ? (source.value as Array<{ pitches: Pitch[] }>).map((chord) => chord.pitches)
+        : source?.value;
+      expect(input.pairs, block.id).toEqual(canonicalGroups);
     }
   });
 
