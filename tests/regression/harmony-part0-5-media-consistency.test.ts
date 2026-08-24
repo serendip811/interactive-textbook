@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { harmonyBook } from '../../books/harmony/src';
 import { createPitchPlaybackFrames } from '../../apps/player/src/musicAudio';
-import { pitchToMidi, type Pitch } from '@interactive-textbook/subject-music';
+import { pitchToMidi, type Pitch } from '../../subjects/music/src';
 
 type ActivityInput = {
   pairs?: Pitch[][];
