@@ -6,7 +6,7 @@ const F3=p('F',3),G3=p('G',3),A3=p('A',3),B3=p('B',3);
 const C4=p('C',4),D4=p('D',4),E4=p('E',4),F4=p('F',4),G4=p('G',4),A4=p('A',4),B4=p('B',4);
 const Gs4=p('G',4,1);
 const I=[C4,E4,G4], ii=[D4,F4,A4], iii=[E4,G4,B4], IV=[F3,A3,C4], V=[G3,B3,D4], vi=[A3,C4,E4], vii=[B3,D4,F4];
-const i=[A3,C4,E4], iidim=[B3,D4,F4], III=[C4,E4,G4], iv=[D4,F4,A4], v=[E4,G4,B4], minV=[E4,Gs4,B4], leadingDim=[Gs4,B4,D4], VI=[F3,A3,C4], VII=[G3,B3,D4];
+const i=[A3,C4,E4], v=[E4,G4,B4], minV=[E4,Gs4,B4], leadingDim=[Gs4,B4,D4], VII=[G3,B3,D4];
 
 interface Draft { key:string; legacy:string; title:string; summary:string; objective:string; markdown:string; groups:Pitch[][]; activityTitle:string; prompt:string; options:Array<{id:string;label:string}>; answer:string; explanation:string; items:string[]; prerequisiteRefs?:string[]; }
 function lesson(d:Draft):Lesson { const prefix=`harmony.${d.key}`, objective=`${prefix}.objective`, data=`${prefix}.data.examples`, check=`${prefix}.block.check`;
