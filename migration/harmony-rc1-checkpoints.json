@@ -1,0 +1,1451 @@
+{
+  "source": "Harmony RC1",
+  "parts": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "checkpointCount": 14,
+  "questionCount": 56,
+  "checkpoints": [
+    {
+      "part": 3,
+      "id": "checkpoint-3",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.3.1",
+          "prompt": "장음계의 음정 패턴은?",
+          "options": [
+            {
+              "value": "온-온-반-온-온-온-반",
+              "label": "온-온-반-온-온-온-반"
+            },
+            {
+              "value": "온-반-온-온-반-온-온",
+              "label": "온-반-온-온-반-온-온"
+            },
+            {
+              "value": "온-온-온-반-온-온-반",
+              "label": "온-온-온-반-온-온-반"
+            },
+            {
+              "value": "반-온-온-반-온-온-온",
+              "label": "반-온-온-반-온-온-온"
+            }
+          ],
+          "answer": "온-온-반-온-온-온-반",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.3.2",
+          "prompt": "G장조의 조표는?",
+          "options": [
+            {
+              "value": "B♭ 1개",
+              "label": "B♭ 1개"
+            },
+            {
+              "value": "F♯·C♯ 2개",
+              "label": "F♯·C♯ 2개"
+            },
+            {
+              "value": "조표 없음",
+              "label": "조표 없음"
+            },
+            {
+              "value": "F♯ 1개",
+              "label": "F♯ 1개"
+            }
+          ],
+          "answer": "F♯ 1개",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.3.3",
+          "prompt": "C장조의 나란한 단조는?",
+          "options": [
+            {
+              "value": "E단조",
+              "label": "E단조"
+            },
+            {
+              "value": "G단조",
+              "label": "G단조"
+            },
+            {
+              "value": "A단조",
+              "label": "A단조"
+            },
+            {
+              "value": "C단조",
+              "label": "C단조"
+            }
+          ],
+          "answer": "A단조",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.3.4",
+          "prompt": "5도권에서 C에서 시계방향 한 칸은?",
+          "options": [
+            {
+              "value": "A단조",
+              "label": "A단조"
+            },
+            {
+              "value": "G장조",
+              "label": "G장조"
+            },
+            {
+              "value": "F장조",
+              "label": "F장조"
+            },
+            {
+              "value": "D장조",
+              "label": "D장조"
+            }
+          ],
+          "answer": "G장조",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 4,
+      "id": "checkpoint-4",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.4.1",
+          "prompt": "장3화음의 내부 구조는?",
+          "options": [
+            {
+              "value": "단3도 + 장3도",
+              "label": "단3도 + 장3도"
+            },
+            {
+              "value": "장3도 + 장3도",
+              "label": "장3도 + 장3도"
+            },
+            {
+              "value": "단3도 + 단3도",
+              "label": "단3도 + 단3도"
+            },
+            {
+              "value": "장3도 + 단3도",
+              "label": "장3도 + 단3도"
+            }
+          ],
+          "answer": "장3도 + 단3도",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.4.2",
+          "prompt": "C장3화음의 제1전위는?",
+          "options": [
+            {
+              "value": "C-E-G",
+              "label": "C-E-G"
+            },
+            {
+              "value": "E-C-G",
+              "label": "E-C-G"
+            },
+            {
+              "value": "E-G-C",
+              "label": "E-G-C"
+            },
+            {
+              "value": "G-C-E",
+              "label": "G-C-E"
+            }
+          ],
+          "answer": "E-G-C",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.4.3",
+          "prompt": "감3화음의 내부 구조는?",
+          "options": [
+            {
+              "value": "장3도 + 장3도",
+              "label": "장3도 + 장3도"
+            },
+            {
+              "value": "단3도 + 단3도",
+              "label": "단3도 + 단3도"
+            },
+            {
+              "value": "장3도 + 단3도",
+              "label": "장3도 + 단3도"
+            },
+            {
+              "value": "단3도 + 장3도",
+              "label": "단3도 + 장3도"
+            }
+          ],
+          "answer": "단3도 + 단3도",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.4.4",
+          "prompt": "로마숫자 분석의 장점은?",
+          "options": [
+            {
+              "value": "조성 안의 상대적 기능을 보여준다",
+              "label": "조성 안의 상대적 기능을 보여준다"
+            },
+            {
+              "value": "항상 실제 음이름만 보여준다",
+              "label": "항상 실제 음이름만 보여준다"
+            },
+            {
+              "value": "리듬을 표시한다",
+              "label": "리듬을 표시한다"
+            },
+            {
+              "value": "템포를 결정한다",
+              "label": "템포를 결정한다"
+            }
+          ],
+          "answer": "조성 안의 상대적 기능을 보여준다",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 5,
+      "id": "checkpoint-5",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.5.1",
+          "prompt": "도미넌트7화음의 구조는?",
+          "options": [
+            {
+              "value": "감3화음 + 단7도",
+              "label": "감3화음 + 단7도"
+            },
+            {
+              "value": "장3화음 + 장7도",
+              "label": "장3화음 + 장7도"
+            },
+            {
+              "value": "장3화음 + 단7도",
+              "label": "장3화음 + 단7도"
+            },
+            {
+              "value": "단3화음 + 장7도",
+              "label": "단3화음 + 장7도"
+            }
+          ],
+          "answer": "장3화음 + 단7도",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.5.2",
+          "prompt": "7화음의 제3전위는 무엇이 베이스인가?",
+          "options": [
+            {
+              "value": "5음",
+              "label": "5음"
+            },
+            {
+              "value": "7음",
+              "label": "7음"
+            },
+            {
+              "value": "근음",
+              "label": "근음"
+            },
+            {
+              "value": "3음",
+              "label": "3음"
+            }
+          ],
+          "answer": "7음",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.5.3",
+          "prompt": "G7에서 F의 일반적인 해결 방향은?",
+          "options": [
+            {
+              "value": "E로 하행",
+              "label": "E로 하행"
+            },
+            {
+              "value": "G로 상행",
+              "label": "G로 상행"
+            },
+            {
+              "value": "F♯로 상행",
+              "label": "F♯로 상행"
+            },
+            {
+              "value": "D로 도약",
+              "label": "D로 도약"
+            }
+          ],
+          "answer": "E로 하행",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.5.4",
+          "prompt": "G7에서 B의 일반적인 해결 방향은?",
+          "options": [
+            {
+              "value": "A로 하행",
+              "label": "A로 하행"
+            },
+            {
+              "value": "D로 상행",
+              "label": "D로 상행"
+            },
+            {
+              "value": "F로 하행",
+              "label": "F로 하행"
+            },
+            {
+              "value": "C로 상행",
+              "label": "C로 상행"
+            }
+          ],
+          "answer": "C로 상행",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 6,
+      "id": "checkpoint-6",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.6.1",
+          "prompt": "장조의 다이어토닉 3화음 패턴은?",
+          "options": [
+            {
+              "value": "대-소-대-소-대-소-감",
+              "label": "대-소-대-소-대-소-감"
+            },
+            {
+              "value": "대-소-소-대-대-소-감",
+              "label": "대-소-소-대-대-소-감"
+            },
+            {
+              "value": "대-대-소-소-대-감-소",
+              "label": "대-대-소-소-대-감-소"
+            },
+            {
+              "value": "소-감-대-소-소-대-대",
+              "label": "소-감-대-소-소-대-대"
+            }
+          ],
+          "answer": "대-소-소-대-대-소-감",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.6.2",
+          "prompt": "C장조의 ii는?",
+          "options": [
+            {
+              "value": "Dm",
+              "label": "Dm"
+            },
+            {
+              "value": "D",
+              "label": "D"
+            },
+            {
+              "value": "Em",
+              "label": "Em"
+            },
+            {
+              "value": "F",
+              "label": "F"
+            }
+          ],
+          "answer": "Dm",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.6.3",
+          "prompt": "기능 흐름의 대표적인 방향은?",
+          "options": [
+            {
+              "value": "D → T → PD → D",
+              "label": "D → T → PD → D"
+            },
+            {
+              "value": "PD → T → D → PD",
+              "label": "PD → T → D → PD"
+            },
+            {
+              "value": "T → D → T → PD",
+              "label": "T → D → T → PD"
+            },
+            {
+              "value": "T → PD → D → T",
+              "label": "T → PD → D → T"
+            }
+          ],
+          "answer": "T → PD → D → T",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.6.4",
+          "prompt": "단조에서 V를 장화음으로 만드는 핵심 변화는?",
+          "options": [
+            {
+              "value": "4음을 올린다",
+              "label": "4음을 올린다"
+            },
+            {
+              "value": "6음을 내린다",
+              "label": "6음을 내린다"
+            },
+            {
+              "value": "7음을 올려 이끎음을 만든다",
+              "label": "7음을 올려 이끎음을 만든다"
+            },
+            {
+              "value": "2음을 내린다",
+              "label": "2음을 내린다"
+            }
+          ],
+          "answer": "7음을 올려 이끎음을 만든다",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 7,
+      "id": "checkpoint-7",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.7.1",
+          "prompt": "가장 강한 토닉 기능은?",
+          "options": [
+            {
+              "value": "I",
+              "label": "I"
+            },
+            {
+              "value": "ii",
+              "label": "ii"
+            },
+            {
+              "value": "IV",
+              "label": "IV"
+            },
+            {
+              "value": "V",
+              "label": "V"
+            }
+          ],
+          "answer": "I",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.7.2",
+          "prompt": "대표적인 프리도미넌트 화음은?",
+          "options": [
+            {
+              "value": "I와 vi",
+              "label": "I와 vi"
+            },
+            {
+              "value": "V와 vii°",
+              "label": "V와 vii°"
+            },
+            {
+              "value": "iii와 V",
+              "label": "iii와 V"
+            },
+            {
+              "value": "ii와 IV",
+              "label": "ii와 IV"
+            }
+          ],
+          "answer": "ii와 IV",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.7.3",
+          "prompt": "대표적인 도미넌트 기능은?",
+          "options": [
+            {
+              "value": "ii와 IV",
+              "label": "ii와 IV"
+            },
+            {
+              "value": "iii와 vi",
+              "label": "iii와 vi"
+            },
+            {
+              "value": "V와 vii°",
+              "label": "V와 vii°"
+            },
+            {
+              "value": "I와 vi",
+              "label": "I와 vi"
+            }
+          ],
+          "answer": "V와 vii°",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.7.4",
+          "prompt": "I-vi-ii-V-I의 기능 흐름은?",
+          "options": [
+            {
+              "value": "T-PD-T-D-PD",
+              "label": "T-PD-T-D-PD"
+            },
+            {
+              "value": "T-T-PD-D-T",
+              "label": "T-T-PD-D-T"
+            },
+            {
+              "value": "T-D-PD-T-D",
+              "label": "T-D-PD-T-D"
+            },
+            {
+              "value": "PD-T-D-PD-T",
+              "label": "PD-T-D-PD-T"
+            }
+          ],
+          "answer": "T-T-PD-D-T",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 8,
+      "id": "checkpoint-8",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.8.1",
+          "prompt": "정격종지의 핵심 진행은?",
+          "options": [
+            {
+              "value": "IV → I",
+              "label": "IV → I"
+            },
+            {
+              "value": "V → vi",
+              "label": "V → vi"
+            },
+            {
+              "value": "I → V",
+              "label": "I → V"
+            },
+            {
+              "value": "V → I",
+              "label": "V → I"
+            }
+          ],
+          "answer": "V → I",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.8.2",
+          "prompt": "반종지는 어디에서 끝나는가?",
+          "options": [
+            {
+              "value": "IV",
+              "label": "IV"
+            },
+            {
+              "value": "vi",
+              "label": "vi"
+            },
+            {
+              "value": "V",
+              "label": "V"
+            },
+            {
+              "value": "I",
+              "label": "I"
+            }
+          ],
+          "answer": "V",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.8.3",
+          "prompt": "기만종지의 대표 진행은?",
+          "options": [
+            {
+              "value": "V → I",
+              "label": "V → I"
+            },
+            {
+              "value": "V → vi",
+              "label": "V → vi"
+            },
+            {
+              "value": "IV → I",
+              "label": "IV → I"
+            },
+            {
+              "value": "ii → V",
+              "label": "ii → V"
+            }
+          ],
+          "answer": "V → vi",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.8.4",
+          "prompt": "변격종지의 핵심 진행은?",
+          "options": [
+            {
+              "value": "IV → I",
+              "label": "IV → I"
+            },
+            {
+              "value": "V → I",
+              "label": "V → I"
+            },
+            {
+              "value": "V → vi",
+              "label": "V → vi"
+            },
+            {
+              "value": "I → IV",
+              "label": "I → IV"
+            }
+          ],
+          "answer": "IV → I",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 9,
+      "id": "checkpoint-9",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.9.1",
+          "prompt": "ii-V-I에서 근음 진행의 특징은?",
+          "options": [
+            {
+              "value": "3도 하행만 반복",
+              "label": "3도 하행만 반복"
+            },
+            {
+              "value": "반음만 이동",
+              "label": "반음만 이동"
+            },
+            {
+              "value": "5도 하행/4도 상행",
+              "label": "5도 하행/4도 상행"
+            },
+            {
+              "value": "2도 상행만 반복",
+              "label": "2도 상행만 반복"
+            }
+          ],
+          "answer": "5도 하행/4도 상행",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.9.2",
+          "prompt": "I-V-vi-IV를 다른 조로 옮겨도 유지되는 것은?",
+          "options": [
+            {
+              "value": "절대 음높이",
+              "label": "절대 음높이"
+            },
+            {
+              "value": "로마숫자 구조",
+              "label": "로마숫자 구조"
+            },
+            {
+              "value": "실제 음이름",
+              "label": "실제 음이름"
+            },
+            {
+              "value": "조표",
+              "label": "조표"
+            }
+          ],
+          "answer": "로마숫자 구조",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.9.3",
+          "prompt": "순차 진행이란?",
+          "options": [
+            {
+              "value": "같은 음정/화성 패턴의 반복",
+              "label": "같은 음정/화성 패턴의 반복"
+            },
+            {
+              "value": "한 화음만 지속",
+              "label": "한 화음만 지속"
+            },
+            {
+              "value": "무조건 V-I",
+              "label": "무조건 V-I"
+            },
+            {
+              "value": "모든 음을 반음씩 이동",
+              "label": "모든 음을 반음씩 이동"
+            }
+          ],
+          "answer": "같은 음정/화성 패턴의 반복",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.9.4",
+          "prompt": "반복 진행의 장점은?",
+          "options": [
+            {
+              "value": "항상 강한 전조를 만든다",
+              "label": "항상 강한 전조를 만든다"
+            },
+            {
+              "value": "반드시 불협화를 만든다",
+              "label": "반드시 불협화를 만든다"
+            },
+            {
+              "value": "리듬을 없앤다",
+              "label": "리듬을 없앤다"
+            },
+            {
+              "value": "안정과 강조를 만든다",
+              "label": "안정과 강조를 만든다"
+            }
+          ],
+          "answer": "안정과 강조를 만든다",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 10,
+      "id": "checkpoint-10",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.10.1",
+          "prompt": "경과음의 전형적 움직임은?",
+          "options": [
+            {
+              "value": "다음 화음음을 미리 연주",
+              "label": "다음 화음음을 미리 연주"
+            },
+            {
+              "value": "두 화음음을 순차적으로 연결",
+              "label": "두 화음음을 순차적으로 연결"
+            },
+            {
+              "value": "도약 후 같은 음으로 복귀",
+              "label": "도약 후 같은 음으로 복귀"
+            },
+            {
+              "value": "앞 화음을 강박까지 유지",
+              "label": "앞 화음을 강박까지 유지"
+            }
+          ],
+          "answer": "두 화음음을 순차적으로 연결",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.10.2",
+          "prompt": "보조음의 특징은?",
+          "options": [
+            {
+              "value": "인접음으로 벗어났다가 원음으로 복귀",
+              "label": "인접음으로 벗어났다가 원음으로 복귀"
+            },
+            {
+              "value": "항상 도약으로 진입",
+              "label": "항상 도약으로 진입"
+            },
+            {
+              "value": "반드시 강박에만 등장",
+              "label": "반드시 강박에만 등장"
+            },
+            {
+              "value": "다음 화음음을 미리 제시",
+              "label": "다음 화음음을 미리 제시"
+            }
+          ],
+          "answer": "인접음으로 벗어났다가 원음으로 복귀",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.10.3",
+          "prompt": "계류음의 세 단계는?",
+          "options": [
+            {
+              "value": "도약-반복-종지",
+              "label": "도약-반복-종지"
+            },
+            {
+              "value": "선행-도약-반복",
+              "label": "선행-도약-반복"
+            },
+            {
+              "value": "준비-전조-종지",
+              "label": "준비-전조-종지"
+            },
+            {
+              "value": "준비-계류-해결",
+              "label": "준비-계류-해결"
+            }
+          ],
+          "answer": "준비-계류-해결",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.10.4",
+          "prompt": "선행음은 무엇을 미리 들려주는가?",
+          "options": [
+            {
+              "value": "조표",
+              "label": "조표"
+            },
+            {
+              "value": "베이스만",
+              "label": "베이스만"
+            },
+            {
+              "value": "다음 화음의 음",
+              "label": "다음 화음의 음"
+            },
+            {
+              "value": "이전 화음의 근음",
+              "label": "이전 화음의 근음"
+            }
+          ],
+          "answer": "다음 화음의 음",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 11,
+      "id": "checkpoint-11",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.11.1",
+          "prompt": "C장조에서 V/V는?",
+          "options": [
+            {
+              "value": "D 또는 D7",
+              "label": "D 또는 D7"
+            },
+            {
+              "value": "F 또는 F7",
+              "label": "F 또는 F7"
+            },
+            {
+              "value": "A♭ 또는 A♭7",
+              "label": "A♭ 또는 A♭7"
+            },
+            {
+              "value": "C 또는 C7",
+              "label": "C 또는 C7"
+            }
+          ],
+          "answer": "D 또는 D7",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.11.2",
+          "prompt": "C장조에서 vii°/V의 근음은?",
+          "options": [
+            {
+              "value": "F",
+              "label": "F"
+            },
+            {
+              "value": "B♭",
+              "label": "B♭"
+            },
+            {
+              "value": "C♯",
+              "label": "C♯"
+            },
+            {
+              "value": "F♯",
+              "label": "F♯"
+            }
+          ],
+          "answer": "F♯",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.11.3",
+          "prompt": "적용화음의 핵심 효과는?",
+          "options": [
+            {
+              "value": "리듬을 바꿈",
+              "label": "리듬을 바꿈"
+            },
+            {
+              "value": "모든 음을 반음 내림",
+              "label": "모든 음을 반음 내림"
+            },
+            {
+              "value": "다른 다이어토닉 화음을 잠시 토닉화",
+              "label": "다른 다이어토닉 화음을 잠시 토닉화"
+            },
+            {
+              "value": "영구적으로 조성을 없앰",
+              "label": "영구적으로 조성을 없앰"
+            }
+          ],
+          "answer": "다른 다이어토닉 화음을 잠시 토닉화",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.11.4",
+          "prompt": "토닉화와 전조의 차이는?",
+          "options": [
+            {
+              "value": "박자표",
+              "label": "박자표"
+            },
+            {
+              "value": "새 조의 지속성과 기능 확립 정도",
+              "label": "새 조의 지속성과 기능 확립 정도"
+            },
+            {
+              "value": "템포 차이",
+              "label": "템포 차이"
+            },
+            {
+              "value": "악기 수",
+              "label": "악기 수"
+            }
+          ],
+          "answer": "새 조의 지속성과 기능 확립 정도",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 12,
+      "id": "checkpoint-12",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.12.1",
+          "prompt": "모달 인터체인지의 핵심은?",
+          "options": [
+            {
+              "value": "완전5도 위 조로 전조",
+              "label": "완전5도 위 조로 전조"
+            },
+            {
+              "value": "모든 코드를 7화음으로 변경",
+              "label": "모든 코드를 7화음으로 변경"
+            },
+            {
+              "value": "조표를 제거",
+              "label": "조표를 제거"
+            },
+            {
+              "value": "같은 으뜸음의 다른 모드에서 화음을 차용",
+              "label": "같은 으뜸음의 다른 모드에서 화음을 차용"
+            }
+          ],
+          "answer": "같은 으뜸음의 다른 모드에서 화음을 차용",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.12.2",
+          "prompt": "C장조에서 흔한 차용화음은?",
+          "options": [
+            {
+              "value": "G(V)",
+              "label": "G(V)"
+            },
+            {
+              "value": "Am(vi)",
+              "label": "Am(vi)"
+            },
+            {
+              "value": "Fm(iv)",
+              "label": "Fm(iv)"
+            },
+            {
+              "value": "Dm(ii)",
+              "label": "Dm(ii)"
+            }
+          ],
+          "answer": "Fm(iv)",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.12.3",
+          "prompt": "나폴리6화음의 기본은?",
+          "options": [
+            {
+              "value": "증4화음",
+              "label": "증4화음"
+            },
+            {
+              "value": "♭II 장3화음의 제1전위",
+              "label": "♭II 장3화음의 제1전위"
+            },
+            {
+              "value": "V7의 제3전위",
+              "label": "V7의 제3전위"
+            },
+            {
+              "value": "vi의 기본형",
+              "label": "vi의 기본형"
+            }
+          ],
+          "answer": "♭II 장3화음의 제1전위",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.12.4",
+          "prompt": "증6화음의 핵심 외성은?",
+          "options": [
+            {
+              "value": "♭6과 ♯4",
+              "label": "♭6과 ♯4"
+            },
+            {
+              "value": "1과 5",
+              "label": "1과 5"
+            },
+            {
+              "value": "2와 7",
+              "label": "2와 7"
+            },
+            {
+              "value": "3과 6",
+              "label": "3과 6"
+            }
+          ],
+          "answer": "♭6과 ♯4",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 13,
+      "id": "checkpoint-13",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.13.1",
+          "prompt": "전조란?",
+          "options": [
+            {
+              "value": "템포를 바꾸는 것",
+              "label": "템포를 바꾸는 것"
+            },
+            {
+              "value": "악기를 바꾸는 것",
+              "label": "악기를 바꾸는 것"
+            },
+            {
+              "value": "조성 중심이 다른 조로 이동하는 것",
+              "label": "조성 중심이 다른 조로 이동하는 것"
+            },
+            {
+              "value": "같은 화음을 반복하는 것",
+              "label": "같은 화음을 반복하는 것"
+            }
+          ],
+          "answer": "조성 중심이 다른 조로 이동하는 것",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.13.2",
+          "prompt": "공통화음 전조의 피벗 화음은?",
+          "options": [
+            {
+              "value": "항상 감7화음",
+              "label": "항상 감7화음"
+            },
+            {
+              "value": "두 조에 모두 속하는 화음",
+              "label": "두 조에 모두 속하는 화음"
+            },
+            {
+              "value": "두 조 어디에도 없는 화음",
+              "label": "두 조 어디에도 없는 화음"
+            },
+            {
+              "value": "항상 V7",
+              "label": "항상 V7"
+            }
+          ],
+          "answer": "두 조에 모두 속하는 화음",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.13.3",
+          "prompt": "직접 전조의 특징은?",
+          "options": [
+            {
+              "value": "공통화음 없이 곧바로 새 조로 이동",
+              "label": "공통화음 없이 곧바로 새 조로 이동"
+            },
+            {
+              "value": "반드시 공통화음 사용",
+              "label": "반드시 공통화음 사용"
+            },
+            {
+              "value": "항상 반음 위로만 이동",
+              "label": "항상 반음 위로만 이동"
+            },
+            {
+              "value": "조성이 변하지 않음",
+              "label": "조성이 변하지 않음"
+            }
+          ],
+          "answer": "공통화음 없이 곧바로 새 조로 이동",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.13.4",
+          "prompt": "공통음 전조에서 연결고리는?",
+          "options": [
+            {
+              "value": "같은 템포",
+              "label": "같은 템포"
+            },
+            {
+              "value": "같은 리듬만",
+              "label": "같은 리듬만"
+            },
+            {
+              "value": "같은 조표만",
+              "label": "같은 조표만"
+            },
+            {
+              "value": "두 조가 공유하는 하나의 음",
+              "label": "두 조가 공유하는 하나의 음"
+            }
+          ],
+          "answer": "두 조가 공유하는 하나의 음",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 14,
+      "id": "checkpoint-14",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.14.1",
+          "prompt": "화성 분석의 첫 단계로 가장 적절한 것은?",
+          "options": [
+            {
+              "value": "악기 수 세기",
+              "label": "악기 수 세기"
+            },
+            {
+              "value": "조성 파악",
+              "label": "조성 파악"
+            },
+            {
+              "value": "모든 비화성음 이름부터 지정",
+              "label": "모든 비화성음 이름부터 지정"
+            },
+            {
+              "value": "템포 측정",
+              "label": "템포 측정"
+            }
+          ],
+          "answer": "조성 파악",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.14.2",
+          "prompt": "로마숫자 분석이 답하는 질문은?",
+          "options": [
+            {
+              "value": "이 화음이 조성의 몇 도에 있는가",
+              "label": "이 화음이 조성의 몇 도에 있는가"
+            },
+            {
+              "value": "이 곡은 몇 BPM인가",
+              "label": "이 곡은 몇 BPM인가"
+            },
+            {
+              "value": "연주자는 누구인가",
+              "label": "연주자는 누구인가"
+            },
+            {
+              "value": "마디 수는 몇 개인가",
+              "label": "마디 수는 몇 개인가"
+            }
+          ],
+          "answer": "이 화음이 조성의 몇 도에 있는가",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.14.3",
+          "prompt": "기능 분석의 장점은?",
+          "options": [
+            {
+              "value": "음표 길이를 계산한다",
+              "label": "음표 길이를 계산한다"
+            },
+            {
+              "value": "조표를 없앤다",
+              "label": "조표를 없앤다"
+            },
+            {
+              "value": "악기 음색을 정한다",
+              "label": "악기 음색을 정한다"
+            },
+            {
+              "value": "여러 화음을 더 큰 역할 단위로 묶는다",
+              "label": "여러 화음을 더 큰 역할 단위로 묶는다"
+            }
+          ],
+          "answer": "여러 화음을 더 큰 역할 단위로 묶는다",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.14.4",
+          "prompt": "악곡 분석에서 종지가 중요한 이유는?",
+          "options": [
+            {
+              "value": "리듬을 단순화한다",
+              "label": "리듬을 단순화한다"
+            },
+            {
+              "value": "음정을 바꾼다",
+              "label": "음정을 바꾼다"
+            },
+            {
+              "value": "악절과 형식의 경계를 드러낸다",
+              "label": "악절과 형식의 경계를 드러낸다"
+            },
+            {
+              "value": "모든 전조를 금지한다",
+              "label": "모든 전조를 금지한다"
+            }
+          ],
+          "answer": "악절과 형식의 경계를 드러낸다",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 15,
+      "id": "checkpoint-15",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.15.1",
+          "prompt": "공통음이 있는 두 화음을 연결할 때 일반적인 원칙은?",
+          "options": [
+            {
+              "value": "공통음을 유지하고 나머지는 가까운 음으로 이동",
+              "label": "공통음을 유지하고 나머지는 가까운 음으로 이동"
+            },
+            {
+              "value": "모든 성부를 도약",
+              "label": "모든 성부를 도약"
+            },
+            {
+              "value": "항상 같은 방향으로 이동",
+              "label": "항상 같은 방향으로 이동"
+            },
+            {
+              "value": "베이스를 고정",
+              "label": "베이스를 고정"
+            }
+          ],
+          "answer": "공통음을 유지하고 나머지는 가까운 음으로 이동",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.15.2",
+          "prompt": "전통 4성부에서 피하는 것은?",
+          "options": [
+            {
+              "value": "반대진행",
+              "label": "반대진행"
+            },
+            {
+              "value": "공통음 유지",
+              "label": "공통음 유지"
+            },
+            {
+              "value": "순차진행",
+              "label": "순차진행"
+            },
+            {
+              "value": "병행5도와 병행8도",
+              "label": "병행5도와 병행8도"
+            }
+          ],
+          "answer": "병행5도와 병행8도",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.15.3",
+          "prompt": "S-A와 A-T의 일반적 간격 원칙은?",
+          "options": [
+            {
+              "value": "항상 10도 이상",
+              "label": "항상 10도 이상"
+            },
+            {
+              "value": "제한 없음",
+              "label": "제한 없음"
+            },
+            {
+              "value": "각각 옥타브 이내",
+              "label": "각각 옥타브 이내"
+            },
+            {
+              "value": "항상 2도",
+              "label": "항상 2도"
+            }
+          ],
+          "answer": "각각 옥타브 이내",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.15.4",
+          "prompt": "V7의 화음 7음은 일반적으로?",
+          "options": [
+            {
+              "value": "반드시 5도 상행",
+              "label": "반드시 5도 상행"
+            },
+            {
+              "value": "순차 하행",
+              "label": "순차 하행"
+            },
+            {
+              "value": "도약 상행",
+              "label": "도약 상행"
+            },
+            {
+              "value": "그대로 반복만",
+              "label": "그대로 반복만"
+            }
+          ],
+          "answer": "순차 하행",
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "part": 16,
+      "id": "checkpoint-16",
+      "questions": [
+        {
+          "id": "harmony.rc1.checkpoint.16.1",
+          "prompt": "코랄 분석에서 함께 봐야 할 것은?",
+          "options": [
+            {
+              "value": "코드명만",
+              "label": "코드명만"
+            },
+            {
+              "value": "리듬만",
+              "label": "리듬만"
+            },
+            {
+              "value": "악기 편성만",
+              "label": "악기 편성만"
+            },
+            {
+              "value": "기능·비화성음·성부진행·종지",
+              "label": "기능·비화성음·성부진행·종지"
+            }
+          ],
+          "answer": "기능·비화성음·성부진행·종지",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.16.2",
+          "prompt": "고전주의 화성의 대표적 특징은?",
+          "options": [
+            {
+              "value": "무작위 화음",
+              "label": "무작위 화음"
+            },
+            {
+              "value": "전조 금지",
+              "label": "전조 금지"
+            },
+            {
+              "value": "명확한 기능과 종지 구조",
+              "label": "명확한 기능과 종지 구조"
+            },
+            {
+              "value": "조성 중심의 완전한 부재",
+              "label": "조성 중심의 완전한 부재"
+            }
+          ],
+          "answer": "명확한 기능과 종지 구조",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.16.3",
+          "prompt": "낭만주의 화성에서 증가하는 요소는?",
+          "options": [
+            {
+              "value": "단일 코드 반복만",
+              "label": "단일 코드 반복만"
+            },
+            {
+              "value": "반음계와 색채적 전조",
+              "label": "반음계와 색채적 전조"
+            },
+            {
+              "value": "모든 변화표 제거",
+              "label": "모든 변화표 제거"
+            },
+            {
+              "value": "종지 완전 제거",
+              "label": "종지 완전 제거"
+            }
+          ],
+          "answer": "반음계와 색채적 전조",
+          "explanation": ""
+        },
+        {
+          "id": "harmony.rc1.checkpoint.16.4",
+          "prompt": "현대 대중음악 분석에 필요한 관점은?",
+          "options": [
+            {
+              "value": "기능과 루프/모달 색채를 함께 본다",
+              "label": "기능과 루프/모달 색채를 함께 본다"
+            },
+            {
+              "value": "기능화성만 절대적으로 적용",
+              "label": "기능화성만 절대적으로 적용"
+            },
+            {
+              "value": "로마숫자를 쓰지 않는다",
+              "label": "로마숫자를 쓰지 않는다"
+            },
+            {
+              "value": "멜로디는 무시한다",
+              "label": "멜로디는 무시한다"
+            }
+          ],
+          "answer": "기능과 루프/모달 색채를 함께 본다",
+          "explanation": ""
+        }
+      ]
+    }
+  ]
+}
