@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import { PlaybackSessionController } from '@interactive-textbook/engine-player';
 import { createPitchPlaybackFrames, synthesizePitches } from './musicAudio';
+import { musicPlayback } from './musicPlayback';
 import { createInterval, keyboardGeometry, midiToPitch, pitchName, pitchToMidi, validateChordSelection, validatePitchPair, type IntervalQuality, type Pitch } from '@interactive-textbook/subject-music';
 interface PairInput { pairs?: Pitch[][]; initial?: Pitch[]; range?: { fromMidi: number; toMidi: number }; target?: { degree: number; quality: IntervalQuality }; targetPitches?: Pitch[]; playbackMode?: 'sequential' | 'simultaneous'; }
 interface Props { tool: string; title: string; input: PairInput; onComplete?: (response: { pitches: Pitch[]; semitones: number; correct: boolean; attempts: number }) => void; }
-const playback = new PlaybackSessionController();
 const staffStep = { C: 0, D: 1, E: 2, F: 3, G: 4, A: 5, B: 6 } as const;
 function staffY(pitch: Pitch) { const diatonic = pitch.octave * 7 + staffStep[pitch.step]; const e4 = 4 * 7 + staffStep.E; return 90 - (diatonic - e4) * 6; }
 function ledgerLines(y: number) { const lines: number[] = []; if (y >= 102) for (let line = 102; line <= y; line += 12) lines.push(line); if (y <= 30) for (let line = 30; line >= y; line -= 12) lines.push(line); return lines; }
@@ -24,9 +23,10 @@ export function Keyboard({ selected, activeMidi, onSelect, fromMidi = 60, toMidi
   return <><p className="keyboard-scroll-hint">건반을 좌우로 밀어 모든 음을 확인하세요.</p><div className="keyboard-scroll"><div className="keyboard" role="group" aria-label={`${pitchName(midiToPitch(fromMidi))}부터 ${pitchName(midiToPitch(toMidi))}까지 피아노 건반. 좌우 방향키로 이동하고 Enter 또는 Space로 선택하세요.`}>{keys.map((key, index) => { const selectedIndex = selected.findIndex((pitch) => pitchToMidi(pitch) === key.midi); const style = key.black ? { left: `${(key.whiteIndex + .72) * width}%`, width: `${width * .56}%` } : { left: `${key.whiteIndex * width}%`, width: `${width}%` }; return <button type="button" key={key.midi} ref={(element) => { keyRefs.current[index] = element; }} tabIndex={index === focusIndex ? 0 : -1} className={`piano-key ${key.black ? 'black' : 'white'} ${selectedIndex >= 0 ? 'selected' : ''} ${activeMidi === key.midi ? 'playing' : ''}`} style={style} aria-label={`${pitchName(key.pitch)}${selectedIndex >= 0 ? `, ${selectedIndex + 1}번째 선택` : ''}`} aria-pressed={selectedIndex >= 0} onFocus={() => setFocusIndex(index)} onKeyDown={(event) => handleKeyDown(event, index)} onClick={() => onSelect?.(key.pitch)}><span>{key.black ? pitchName(key.pitch).replace(/\d/g, '') : key.pitch.step}</span>{selectedIndex >= 0 && <b>{selectedIndex + 1}</b>}</button>; })}</div></div></>;
 }
 function usePitchAudio() {
-  const context = useRef<AudioContext | null>(null); const [activeMidi, setActiveMidi] = useState<number>(); const [playing, setPlaying] = useState(false);
-  const stop = () => { playback.stop(); setActiveMidi(undefined); setPlaying(false); };
-  const play = async (pitches: Pitch[], simultaneous = false) => { stop(); const session = playback.start('harmony.audio.semitone'); setPlaying(true); const audio = context.current ?? new AudioContext(); context.current = audio; await audio.resume(); const frames = createPitchPlaybackFrames(pitches, simultaneous); for (const frame of frames) { if (session.signal.aborted) return; setActiveMidi(frame.length === 1 ? pitchToMidi(frame[0]) : undefined); const durationMs = simultaneous ? 700 : 450; synthesizePitches(audio, frame, durationMs, simultaneous ? .1 : .18); await new Promise((resolve) => setTimeout(resolve, durationMs + 70)); } if (!session.signal.aborted) stop(); };
+  const context = useRef<AudioContext | null>(null); const stopSound = useRef<(() => void) | null>(null); const [activeMidi, setActiveMidi] = useState<number>(); const [playing, setPlaying] = useState(false);
+  const clearPlayback = () => { stopSound.current?.(); stopSound.current = null; setActiveMidi(undefined); setPlaying(false); };
+  const stop = () => { musicPlayback.stop(); clearPlayback(); };
+  const play = async (pitches: Pitch[], simultaneous = false) => { const session = musicPlayback.start('harmony.audio.semitone'); session.signal.addEventListener('abort', clearPlayback, { once: true }); setPlaying(true); const audio = context.current ?? new AudioContext(); context.current = audio; await audio.resume(); const frames = createPitchPlaybackFrames(pitches, simultaneous); for (const frame of frames) { if (session.signal.aborted) return; setActiveMidi(frame.length === 1 ? pitchToMidi(frame[0]) : undefined); const durationMs = simultaneous ? 700 : 450; stopSound.current = synthesizePitches(audio, frame, durationMs, simultaneous ? .1 : .18); await new Promise((resolve) => setTimeout(resolve, durationMs + 70)); } if (!session.signal.aborted) clearPlayback(); };
   return { activeMidi, playing, play, stop };
 }
 export function MusicActivity({ tool, title, input, onComplete }: Props) {

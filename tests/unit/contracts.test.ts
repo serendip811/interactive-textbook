@@ -31,4 +31,12 @@ describe('engine runtime contracts', () => {
     expect(second.signal.aborted).toBe(false);
     expect(sessions.activeSessionId).toBe(second.id);
   });
+  it('notifies the previous playback owner so its sound and UI can stop', () => {
+    const sessions = new PlaybackSessionController();
+    const first = sessions.start('example.progression');
+    let stopped = false;
+    first.signal.addEventListener('abort', () => { stopped = true; }, { once: true });
+    sessions.start('example.listener');
+    expect(stopped).toBe(true);
+  });
 });
