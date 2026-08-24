@@ -2,7 +2,7 @@ import { blockVersion, type Lesson, type Part } from '@interactive-textbook/sche
 import type { Pitch } from '@interactive-textbook/subject-music';
 
 const p=(step:Pitch['step'],octave:number,alter:Pitch['alter']=0):Pitch=>({step,alter,octave});
-const C3=p('C',3),G3=p('G',3),A3=p('A',3),B3=p('B',3),C4=p('C',4),D4=p('D',4),Ds4=p('D',4,1),E4=p('E',4),F4=p('F',4),Fs4=p('F',4,1),G4=p('G',4),Gs4=p('G',4,1),A4=p('A',4),Bb4=p('B',4,-1),B4=p('B',4),C5=p('C',5),D5=p('D',5),E5=p('E',5),F5=p('F',5),G5=p('G',5);
+const C3=p('C',3),G3=p('G',3),A3=p('A',3),B3=p('B',3),C4=p('C',4),D4=p('D',4),E4=p('E',4),F4=p('F',4),Fs4=p('F',4,1),G4=p('G',4),A4=p('A',4),Bb4=p('B',4,-1),B4=p('B',4),C5=p('C',5),D5=p('D',5),F5=p('F',5);
 const I=[C4,E4,G4],ii=[D4,F4,A4],IV=[F4,A4,C5],V=[G3,B3,D4],vi=[A3,C4,E4];
 const opts=(...labels:string[])=>labels.map((label,index)=>({id:`o${index+1}`,label}));
 interface Draft{key:string;legacy:string;title:string;summary:string;objective:string;markdown:string;groups:Pitch[][];activityTitle:string;prompt:string;options:Array<{id:string;label:string}>;answer:string;explanation:string;items:string[];prerequisiteRefs?:string[];}
