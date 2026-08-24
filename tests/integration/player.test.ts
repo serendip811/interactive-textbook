@@ -9,7 +9,7 @@ describe('data-driven player', () => {
   it('reaches the representative triad after batch A', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.consonance.lesson').next?.id).toBe('harmony.lesson.triad'); });
   it('reaches cadence after the triad lesson', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.triad').next?.id).toBe('harmony.lesson.cadence'); });
   it('reaches voice leading after cadence', () => { expect(getLessonNavigation(harmonyBook, 'harmony.lesson.cadence').next?.id).toBe('harmony.lesson.voice-leading'); });
-  it('loads all twelve batch A lessons plus three representative lessons', () => { expect(flattenLessons(loadBook(harmonyBook))).toHaveLength(15); });
+  it('loads batch A, batch B and the remaining representative lessons', () => { expect(flattenLessons(loadBook(harmonyBook))).toHaveLength(27); });
   it('loads the functions book and navigates all five lessons', () => { const book = loadBook(functionsBook); expect(flattenLessons(book)).toHaveLength(5); expect(getLessonNavigation(book, 'functions.lesson.coordinates').next?.id).toBe('functions.lesson.input-output'); expect(getLessonNavigation(book, 'functions.lesson.intersection').next).toBeUndefined(); });
   it('fails safely when a book has no lessons', () => { expect(() => loadBook({ ...harmonyBook, parts: [] })).toThrow('표시할 단원'); });
 });

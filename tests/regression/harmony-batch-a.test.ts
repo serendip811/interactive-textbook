@@ -22,6 +22,6 @@ describe('Harmony batch A migration', () => {
   });
   it('keeps the whole book valid and retains later representative lessons', () => {
     expect(validateBook(harmonyBook, { supportedBlockTypes: commonBlockKinds })).toEqual([]);
-    expect(flattenLessons(harmonyBook).slice(-3).map((lesson) => lesson.id)).toEqual(['harmony.lesson.triad', 'harmony.lesson.cadence', 'harmony.lesson.voice-leading']);
+    expect(flattenLessons(harmonyBook).map((lesson) => lesson.id)).toEqual(expect.arrayContaining(['harmony.lesson.triad', 'harmony.lesson.cadence', 'harmony.lesson.voice-leading']));
   });
 });
