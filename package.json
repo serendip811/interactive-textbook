@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "audit:rc1": "node scripts/audit-rc1.mjs",
+    "extract:harmony:batch-a": "node scripts/extract-harmony-batch-a.mjs",
     "build": "pnpm --filter @interactive-textbook/player build",
     "dev": "pnpm --filter @interactive-textbook/player dev",
     "format": "prettier --write .",
