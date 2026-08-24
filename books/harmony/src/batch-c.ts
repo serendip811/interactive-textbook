@@ -2,9 +2,9 @@ import { blockVersion, type Lesson, type Part } from '@interactive-textbook/sche
 import type { Pitch } from '@interactive-textbook/subject-music';
 
 const p = (step: Pitch['step'], octave: number, alter: Pitch['alter'] = 0): Pitch => ({ step, alter, octave });
-const C3=p('C',3),D3=p('D',3),E3=p('E',3),F3=p('F',3),G3=p('G',3),A3=p('A',3),B3=p('B',3);
-const C4=p('C',4),D4=p('D',4),E4=p('E',4),F4=p('F',4),G4=p('G',4),A4=p('A',4),B4=p('B',4),C5=p('C',5),D5=p('D',5),E5=p('E',5);
-const Fs4=p('F',4,1),Gs4=p('G',4,1),Bb3=p('B',3,-1);
+const F3=p('F',3),G3=p('G',3),A3=p('A',3),B3=p('B',3);
+const C4=p('C',4),D4=p('D',4),E4=p('E',4),F4=p('F',4),G4=p('G',4),A4=p('A',4),B4=p('B',4);
+const Gs4=p('G',4,1);
 const I=[C4,E4,G4], ii=[D4,F4,A4], iii=[E4,G4,B4], IV=[F3,A3,C4], V=[G3,B3,D4], vi=[A3,C4,E4], vii=[B3,D4,F4];
 const i=[A3,C4,E4], iidim=[B3,D4,F4], III=[C4,E4,G4], iv=[D4,F4,A4], minV=[E4,Gs4,B4], VI=[F3,A3,C4], VII=[G3,B3,D4];
 
