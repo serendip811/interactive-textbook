@@ -29,6 +29,8 @@ describe('Harmony batch B migration', () => {
     const lesson = allLessons.find((item) => item.id === 'harmony.lesson.seventh-resolution.lesson');
     const groups = lesson?.data?.[0].value as Pitch[][];
     expect(groups.map((group) => group.map(pitchName))).toEqual([['G3', 'B3', 'D4', 'F4'], ['C4', 'E4', 'G4']]);
+    const activity = lesson?.blocks.find((block) => block.type === 'activity.subject');
+    expect((activity?.data as { input: { playbackMode?: string } }).input.playbackMode).toBe('progression');
   });
   it('passes schema, ID, reference and block validation', () => {
     expect(validateBook(harmonyBook, { supportedBlockTypes: commonBlockKinds })).toEqual([]);
