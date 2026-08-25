@@ -65,6 +65,21 @@ describe('Harmony batch E migration',()=>{
     expect(Math.sign(pitchToMidi(groups[1][0])-pitchToMidi(groups[0][0]))).toBe(-1);
     expect(Math.sign(pitchToMidi(groups[1][3])-pitchToMidi(groups[0][3]))).toBe(1);
   });
+  it('uses four ordered voices without direct perfect parallels in the chorale example',()=>{
+    const groups=lessonById('harmony.lesson.chorale-analysis.lesson')?.data?.[0].value as Pitch[][];
+    expect(groups).toHaveLength(8);
+    expect(groups.every((group)=>group.length===4)).toBe(true);
+    expect(groups[0].map(pitchName)).toEqual(['C3','C4','E4','G4']);
+    expect(groups[7].map(pitchName)).toEqual(['C3','C4','E4','G4']);
+    expect(directPerfectParallels(groups)).toEqual([]);
+  });
+  it('spells the augmented sixth above A-flat and resolves both tendency tones to G',()=>{
+    const groups=lessonById('harmony.lesson.romantic-harmony.lesson')?.data?.[0].value as Pitch[][];
+    expect(groups[2].map(pitchName)).toEqual(['A♭4','C5','F♯5']);
+    expect(groups[3].map(pitchName)).toEqual(['G4','B4','D5','G5']);
+    expect(pitchToMidi(groups[3][0])-pitchToMidi(groups[2][0])).toBe(-1);
+    expect(pitchToMidi(groups[3][3])-pitchToMidi(groups[2][2])).toBe(1);
+  });
   it('keeps the I-IV-V-I exercise in consistent bass-to-soprano order',()=>{
     expect(groupNames('harmony.lesson.four-part-harmony.lesson')).toEqual([
       ['C3','C4','E4','G4'],
