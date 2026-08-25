@@ -22,6 +22,8 @@ describe('Harmony batch C migration', () => {
     const item = lessons.find((lesson) => lesson.id === 'harmony.lesson.minor-diatonic.lesson');
     const groups = item?.data?.[0].value as Pitch[][];
     expect(groups.flat().map(pitchName)).toContain('G♯4');
+    expect(groups[2].map(pitchName)).toEqual(['G3', 'B3', 'D4']);
+    expect(groups[3].map(pitchName)).toEqual(['G♯3', 'B3', 'D4']);
   });
   it('keeps all four cadence types before the listening lesson', () => {
     expect(lessons.slice(9, 14).map((lesson) => lesson.id)).toEqual(['harmony.lesson.authentic-cadence.lesson','harmony.lesson.half-cadence.lesson','harmony.lesson.plagal-cadence.lesson','harmony.lesson.deceptive-cadence.lesson','harmony.lesson.cadence']);

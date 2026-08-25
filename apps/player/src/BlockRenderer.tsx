@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { Fragment, useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { Block } from '@interactive-textbook/schema';
 import {
   evaluateMultipleChoice,
@@ -30,6 +30,7 @@ function MultipleChoiceBlock({ data, onSubmit }: { data: MultipleChoiceBlockData
   const [submitted, setSubmitted] = useState(false);
   const [attempts, setAttempts] = useState(0);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const feedbackId = useId();
   const result = submitted ? evaluateMultipleChoice(data, selected) : undefined;
   const choose = (id: string) => { setSelected(id); setSubmitted(false); };
   const moveTo = (index: number) => {
@@ -44,9 +45,9 @@ function MultipleChoiceBlock({ data, onSubmit }: { data: MultipleChoiceBlockData
     if (event.key === 'End') { event.preventDefault(); moveTo(data.options.length - 1); }
   };
   return <form className="quiz" onSubmit={(event) => { event.preventDefault(); if (selected) { const evaluation = evaluateMultipleChoice(data, selected); const count = attempts + 1; setAttempts(count); setSubmitted(true); onSubmit?.({ response: selected, correct: evaluation.correct, attempts: count }); } }}>
-    <fieldset><legend>{data.prompt}</legend><div className="options" role="radiogroup" aria-label={data.prompt}>{data.options.map((option, index) => <button key={option.id} ref={(element) => { optionRefs.current[index] = element; }} type="button" role="radio" aria-checked={selected === option.id} tabIndex={selected ? (selected === option.id ? 0 : -1) : (index === 0 ? 0 : -1)} className={`option ${selected === option.id ? 'option--selected' : ''}`} onKeyDown={(event) => handleOptionKeyDown(event, index)} onClick={() => choose(option.id)}><span className="radio-indicator" aria-hidden="true" />{option.label}</button>)}</div></fieldset>
+    <fieldset><legend>{data.prompt}</legend><div className="options" role="radiogroup" aria-label={data.prompt}>{data.options.map((option, index) => { const isSelected = selected === option.id; const judged = submitted && isSelected; const correct = judged && result?.correct; return <button key={option.id} ref={(element) => { optionRefs.current[index] = element; }} type="button" role="radio" aria-checked={isSelected} aria-label={`${option.label}${judged ? `, ${correct ? '정답' : '오답'}` : ''}`} aria-describedby={judged ? feedbackId : undefined} tabIndex={selected ? (isSelected ? 0 : -1) : (index === 0 ? 0 : -1)} className={`option ${isSelected ? 'option--selected' : ''} ${correct ? 'option--correct' : judged ? 'option--incorrect' : ''}`} onKeyDown={(event) => handleOptionKeyDown(event, index)} onClick={() => choose(option.id)}><span className="radio-indicator" aria-hidden="true" />{option.label}{judged && <strong className="option-result" aria-hidden="true">{correct ? '✓ 정답' : '✕ 오답'}</strong>}</button>; })}</div></fieldset>
     <button type="submit" disabled={!selected}>정답 확인</button>
-    <p className={result?.correct ? 'feedback feedback--success' : 'feedback'} aria-live="polite">{result?.message}</p>
+    <p id={feedbackId} className={result?.correct ? 'feedback feedback--success' : 'feedback'} aria-live="polite">{result?.message}</p>
   </form>;
 }
 function SubjectActivityBlock({ data, referencedData, onComplete }: { data: SubjectActivityBlockData; referencedData?: unknown[]; onComplete?: (result: unknown) => void }) {
